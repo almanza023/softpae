@@ -68,17 +68,19 @@ class MenuController extends Controller
                     $detalle->grupo_etario_id=$grupo[$i];
                    
                     $detalle->cantidad=$request->can[$i];
-                    for($a = 0; $a < (count($producto)); $a++){
-                        $detalle->producto_id=$producto[$a];
-                    }
+                    $detalle->producto_id= $request->producto_id[$i];
+                               
+                       
                     $detalle->save();
+                    
+                    
                     
 
                     
                 }
 
                  DB::commit();
-                 return response()->json(['success' => 'DATOS ALMACENADOS']);
+                 return response()->json(['success' => 'MENU  REGISTRADO CON EXITO. COD: M-'.$menu->id]);
              } catch (\Exception $ex) {
                  DB::rollback();
                  return response()->json(['warning' => $ex->getMessage()]);

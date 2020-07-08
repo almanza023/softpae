@@ -24,7 +24,11 @@ Route::resource('productos', 'ProductoController');
 Route::resource('instituciones', 'InstitucionController');
 Route::resource('beneficiarios', 'BeneficiarioController');
 Route::resource('menus', 'MenuController');
+Route::resource('minutas', 'MinutaController');
 
+
+//filtros
+Route::get('filtro/menus', 'MinutaController@filtro')->name('menu.filtro');
 
 //estados
 Route::get('jornadas/estado/{id}', 'JornadaController@change')->name('jornadas.status');
