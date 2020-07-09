@@ -9,7 +9,9 @@
                          <tr>
                              <th style="width: 5%">N°</th>
                              <th>PRODUCTO</th>                          
-                             <th>CANTIDAD</th>                          
+                            @foreach ($menus_id as $item)
+                                <th style="width: 10%">M-{{ $item->id}}</th>
+                            @endforeach                       
                          </tr>
                          @php
                              $productos=DB::select('select * from productos');
@@ -25,10 +27,7 @@
                              @if ($item->id==$m->producto_id)
                                  <td>{{ $m->cantidad }}</td>
                              @endif
-                            @endforeach
-                            
-                        
-                              
+                            @endforeach 
                                  
                             </tr>                
                          @endforeach

@@ -103,7 +103,8 @@ class MinutaController extends Controller
         
         if (request()->ajax()) {
             $menus=Menu::filtro($request->jornada_id,  $request->tipo_id, $request->grupo_id);
-            return response()->view('ajax.filtro-menu', compact('menus'));
+            $menus_id=Menu::getIdMenu($request->jornada_id,  $request->tipo_id, $request->grupo_id);
+            return response()->view('ajax.filtro-menu', compact('menus', 'menus_id'));
         }
 
     }

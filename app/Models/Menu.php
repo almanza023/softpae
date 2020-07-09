@@ -42,6 +42,20 @@ class Menu extends Model
         return $resul;
     }
 
+    public static function getIdMenu($jornada, $tipo, $grupo){
+        $resul = DB::table('detalle_menus as dm')
+        ->join('menus as m', 'm.id', '=', 'dm.menu_id')       
+        ->join('grupo_etarios as ge', 'ge.id', '=', 'dm.grupo_etario_id')
+        ->select( "m.id", )
+        ->where('m.jornada_id', $jornada)
+        ->where('m.tipo_complemento_id', $tipo)
+        ->where('dm.grupo_etario_id', $grupo)
+        ->orderBy('m.id', 'asc')
+        ->distinct()
+        ->get();
+        return $resul;
+    }
+
     
  
     
