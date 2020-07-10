@@ -5,18 +5,14 @@
                 <h3 class="mt-0 header-title text-center">DETALLES DE MENÚ</h3>     
                
                     <div class="table-responsive">
-                     <table class="table table-bordered">
+                     <table class="table table-bordered" style="width:100%">
                          <tr>
-                             <th style="width: 5%">N°</th>
+                             <th style="width: 5%;">N°</th>
                              <th>PRODUCTO</th>                          
                             @foreach ($menus_id as $item)
-                                <th style="width: 10%">M-{{ $item->id}}</th>
+                                <th style="width: 10%;">M-{{ $item->codigo}}</th>
                             @endforeach                       
-                         </tr>
-                         @php
-                             $productos=DB::select('select * from productos');
-                         @endphp
-                        
+                         </tr>                                               
                          @foreach ($productos as $item)
                             <tr>
                             <td>{{ $loop->iteration  }}</td>
@@ -25,7 +21,7 @@
                             
                             @foreach ($menus as $m)
                              @if ($item->id==$m->producto_id)
-                                 <td>{{ $m->cantidad }}</td>
+                                 <td style="width:15px">{{ $m->cantidad }}</td>
                              @endif
                             @endforeach 
                                  

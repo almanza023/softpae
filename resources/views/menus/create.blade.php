@@ -16,6 +16,7 @@
                          <tr>
                              <th>JORNADA</th>                            
                              <th>TIPO COMPLEMENTO</th>                            
+                             <th>GRUPO ETARIO</th>                            
                          </tr>
                          <tr>
                              <td>
@@ -29,6 +30,13 @@
                                 <select name="tipo_id" id="tipo_id" class="form-control">
                                     @foreach ($tipos as $item)
                                         <option value="{{ $item->id }}">{{ $item->nombre }}</option>
+                                    @endforeach
+                                </select>
+                            </td>
+                            <td>
+                                <select name="grupo_id" id="grupo_id" class="form-control">
+                                    @foreach ($grupos as $item)
+                                        <option value="{{ $item->id }}">{{ $item->rango }}</option>
                                     @endforeach
                                 </select>
                             </td>
@@ -59,27 +67,25 @@
                      <table class="table table-bordered">
                          <tr>
                              <th style="width: 5%">N°</th>
-                             <th>PRODUCTO</th>                           
-                             
-                             @foreach ($grupos as $item)
-                                 <th style="width: 20%">{{ $item->rango }}</th>
-                             @endforeach                         
+                             <th >PRODUCTO</th>                     
+                             <th style="width: 5%">CANTIDAD</th>                     
+                                        
                          </tr>
                          @foreach ($productos as $p)
                              <tr>
                                 <td style="width: 5%">{{ $loop->iteration }}</td>
-                                
+                                 <input type="hidden" name="producto_id[]"  value="{{ $p->id }}">
                                 <td>{{ $p->nombre }}
                                    
                                 </td>
-                                @foreach ($grupos as $item)
-                                 <td style="width: 20%">
-                                    <input type="hidden" name="producto_id[]"  value="{{ $p->id }}">
-                                     <input type="number" class="form-control" name="can[]" required step="0.1" min="0" value="0">
-                                     <input type="hidden" name="grupo_etario_id[]" value="{{ $item->id }}">
+                              
+                                <td style="width: 15%">
+                                <input type="number" class="form-control" name="can[]" required step="0.1" min="0" value="0">                                    
                                  </td>
-                                 
-                             @endforeach   
+                                 <td style="width: 10%">
+                                 {{ $p->unidad->prefijo}}
+                                 </td>
+                             
                                
                              </tr>
                          @endforeach

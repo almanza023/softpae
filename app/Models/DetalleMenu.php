@@ -9,7 +9,7 @@ class DetalleMenu extends Model
     protected $table = 'detalle_menus';
 
     protected $fillable = [
-        'menu_id', 'grupo_etario_id', 'producto_id', 'cantidad', 'estado'
+        'menu_id', 'producto_id', 'cantidad', 'estado'
          
     ];   
 
@@ -17,19 +17,17 @@ class DetalleMenu extends Model
 
     public function menus()
     {
-        return $this->belongsToMany('App\Menu');
+        return $this->belongsToMany('App\Models\Menu');
     }
 
     public function productos()
     {
-        return $this->belongsToMany('App\Producto');
+        return $this->belongsToMany('App\Models\Producto');
     }
 
-    public function grupo_etarios()
-    {
-        return $this->belongsToMany('App\GrupoEtario');
-    }
 
+    
+  
     
  
     

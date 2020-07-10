@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Beneficiario;
+use App\Models\CodigoMenu;
 use App\Models\DetalleMenu;
 use App\Models\GrupoEtario;
 use App\Models\Institucion;
@@ -102,9 +103,11 @@ class MinutaController extends Controller
     {
         
         if (request()->ajax()) {
-            $menus=Menu::filtro($request->jornada_id,  $request->tipo_id, $request->grupo_id);
-            $menus_id=Menu::getIdMenu($request->jornada_id,  $request->tipo_id, $request->grupo_id);
-            return response()->view('ajax.filtro-menu', compact('menus', 'menus_id'));
+            $menus_id=CodigoMenu::where('jornada_id', $request->jornada_id)           
+            ->where('grupo_etario_id', $request->grupo_id)->get();
+            $productos = Producto::all();  
+            $menus=Menu::filtro($request->jornada_id, $request->tipo_id, $request->grupo_id) ;        
+            return response()->view('ajax.filtro-menu', compact('menus', 'menus_id', 'productos'));
         }
 
     }
