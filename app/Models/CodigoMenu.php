@@ -29,6 +29,13 @@ class CodigoMenu extends Model
         return $this->belongsTo('App\Models\Menu');
     }
 
+    public static function getMenus($jornada){
+
+        $resul = CodigoMenu::where('jornada_id', $jornada)
+        ->orderBy('codigo', 'asc')-> get();
+        return $resul;
+    }
+
    
     
  

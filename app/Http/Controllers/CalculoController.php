@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Beneficiario;
+use App\Models\Calculo;
 use App\Models\CodigoMenu;
+use App\Models\DetalleCalculo;
 use App\Models\DetalleMenu;
 use App\Models\GrupoEtario;
 use App\Models\Institucion;
@@ -15,7 +17,7 @@ use App\Models\TipoComplemento;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class MinutaController extends Controller
+class CalculoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +29,7 @@ class MinutaController extends Controller
         $grupos=GrupoEtario::where('estado', '1')->get();
         $jornadas=Jornada::where('estado', '1')->get();
         $tipos=TipoComplemento::where('estado', '1')->get();
-        return view('minutas.index', compact('grupos', 'jornadas', 'tipos'));
+        return view('calculos.index', compact('grupos', 'jornadas', 'tipos'));
     }
 
     /**
@@ -37,7 +39,10 @@ class MinutaController extends Controller
      */
     public function create()
     {
-        
+        $grupos=GrupoEtario::where('estado', '1')->get();
+        $jornadas=Jornada::where('estado', '1')->get();
+        $tipos=TipoComplemento::where('estado', '1')->get();
+        return view('calculos.create', compact('grupos', 'jornadas', 'tipos'));
     }
 
     /**
@@ -49,7 +54,33 @@ class MinutaController extends Controller
     public function store(Request $request)
     {
        
-       
+       DB::beginTransaction();
+       try {
+        $cal= new Calculo();
+        $cal->jornada_id=$request->jornada_id;
+        $cal->inicio=$request->inicio;
+        $cal->final=$request->final;
+        $cal->save();
+        
+        $dias=$request->dia;
+        $menus=$request->menu_id;
+          
+          for ($i = 0; $i < (count($dias)); $i++) {                    
+              $detalle = new DetalleCalculo();
+              $detalle->calculo_id=$cal->id;                 
+              $detalle->menu_id=$menus[$i];                 
+              $detalle->dia=$dias[$i];   
+              $detalle->save();       
+          }
+
+           DB::commit();
+           return response()->json(['success' => 'CALCULO REALIZADO CON EXITO']);
+       } catch (\Exception $ex) {
+           DB::rollback();
+           return response()->json(['warning' => $ex->getMessage()]);
+  }
+
+
        
     }
 
@@ -61,7 +92,8 @@ class MinutaController extends Controller
      */
     public function show($id)
     {
-        //
+        
+
     }
 
     /**
@@ -99,16 +131,11 @@ class MinutaController extends Controller
         //
     }
 
-    public function filtro(Request $request)
+    public function buscar(Request $request)
     {
+        $calculos=DetalleCalculo::getAllId($request->jornada_id, $request->inicio,  $request->final);
         
-        if (request()->ajax()) {
-            $menus_id=CodigoMenu::where('jornada_id', $request->jornada_id)           
-            ->get();
-            $productos = Producto::all();  
-            $menus=Menu::filtro($request->jornada_id, $request->grupo_id) ;        
-            return response()->view('ajax.filtro-menu', compact('menus', 'menus_id', 'productos'));
-        }
+       return  response()->view('ajax.buscar-calculos', compact('calculos'));
 
     }
 }

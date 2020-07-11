@@ -2,6 +2,9 @@
 @section('titulo')
     Calculos
 @endsection
+@section('estilos')
+<link href="{{ asset('theme/agroxa/plugins/dateranger/daterangepicker.css') }}" rel="stylesheet">
+@endsection
 @section('content')
 
 <div class="row">
@@ -13,7 +16,12 @@
                 >
                    <i class="fa fa-newspaper"></i> CREAR 
                 </a>
-                </p>
+
+                <button type="button" class="btn btn-warning waves-effect waves-light" 
+                data-toggle="modal" data-target="#BuscarCalculo">
+                   <i class="fa fa-search-plus"></i> BUSCAR 
+                </button>
+               
 
                
 
@@ -24,11 +32,17 @@
     
 </div>
 
+<div id="resultado">
+
+</div>
+@include('modals.buscar-calculo')
 
 @endsection
 
 
 @section('scripts')
-
+<script src="{{ asset('theme/agroxa/plugins/dateranger/moment.min.js') }}"></script>
+<script src="{{ asset('theme/agroxa/plugins/dateranger/daterangepicker.js') }}"></script>
+<script src="{{ asset('js/Calculo.js') }}"></script>
 
 @endsection

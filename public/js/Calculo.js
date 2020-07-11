@@ -1,58 +1,42 @@
 $(function() {
 
+    $('input[name="daterange"]').daterangepicker({
+        opens: 'rigth'
+    }, function(start, end, label) {
+        $('#inicio').val(start.format('YYYY-MM-DD'));
+        $('#final').val(end.format('YYYY-MM-DD'));
 
-    $("#form_edit").submit(function(event) {
-        event.preventDefault();
-        update();
     });
+
+
+
+
 
 
     $("#buscar").click(function() {
-        filtro();
+        buscar();
+
     });
+
+
+
+
 
 
 });
 
-//guardar en el form
-const filtro = () => {
-    let form = $('#form_filtro');
+const buscar = () => {
+    let form = $('#form_buscar');
     $.ajax({
         data: form.serialize(),
         url: form.attr('action'),
         type: 'GET',
         dataType: 'html',
         success: function(data) {
+            $('#resultado').show();
+
             $('#resultado').html(data);
 
-        }
-    });
-
-}
-
-//actualizar-editform
-const update = () => {
-    let form = $('#form_edit');
-    $.ajax({
-        data: form.serialize(),
-        url: form.attr('action'),
-        type: form.attr('method'),
-        dataType: 'html',
-        success: function(data) {
-
-            if (data) {
-
-            } else {
-                warning(data.warning);
-            }
-
-        },
-        error: function(data) {
-
-            if (data.status === 422) {
-                let errors = $.parseJSON(data.responseText);
-                addErrorMessage(errors);
-            }
         }
     });
 

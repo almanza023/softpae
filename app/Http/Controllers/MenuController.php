@@ -52,45 +52,43 @@ class MenuController extends Controller
 
         
         $codigos=CodigoMenu::where('jornada_id', $request->jornada_id)
-        ->where('grupo_etario_id', $request->grupo_id)->count();
+        ->count();
         //Minimo de menus 22
         if($codigos<22){
             DB::beginTransaction();
             try {
-               $menu= new Menu();
-               $menu->tipo_complemento_id=$request->tipo_id;
-               $menu->jornada_id=$request->jornada_id;
-               $menu->grupo_etario_id=$request->grupo_id;
+               $menu= new Menu();               
+               $menu->jornada_id=$request->jornada_id;             
                $menu->save();
              
                //obtener cantidad de menus
                $filas = Menu::where('jornada_id', $request->jornada_id)
-               ->where('grupo_etario_id', $request->grupo_id)->count();
+                ->count();
                
               
                if($filas==0){
                    $cod= new CodigoMenu();
                    $cod->menu_id=$menu->id;
-                   $cod->jornada_id=$request->jornada_id;
-                   $cod->grupo_etario_id=$request->grupo_id;
+                   $cod->jornada_id=$request->jornada_id;                   
                    $cod->codigo=1;
                    $cod->save();
                }else {
                    $cod= new CodigoMenu();
                    $cod->menu_id=$menu->id;
-                   $cod->jornada_id=$request->jornada_id;
-                   $cod->grupo_etario_id=$request->grupo_id;
+                   $cod->jornada_id=$request->jornada_id;                   
                    $cod->codigo=$filas + 1;
                    $cod->save(); 
                }
                //Crear Detalles
                $productos=$request->producto_id;
+               $grupos=$request->grupo_etario_id;
                
-               for ($i = 0; $i < (count($productos)); $i++) {                    
+               for ($i = 0; $i < (count($grupos)); $i++) {                    
                    $detalle = new DetalleMenu();
                    $detalle->menu_id=$menu->id;                 
                    $detalle->cantidad=$request->can[$i];
-                   $detalle->producto_id= $request->producto_id[$i];                     
+                   $detalle->producto_id= $request->producto_id[$i];   
+                   $detalle->grupo_etario_id=$grupos[$i];                  
                    $detalle->save();       
                }
 
@@ -128,6 +126,15 @@ class MenuController extends Controller
     public function edit($id)
     {
         //
+    }
+
+    public function getMenus($jornada)
+    {
+        
+        if(request()->ajax()){
+            $menus=CodigoMenu::getMenus($jornada);
+            return response()->json($menus);
+        }
     }
 
     /**
@@ -170,5 +177,18 @@ class MenuController extends Controller
             $menu->update(['estado' => 1]);
         }
         return response()->json(['success' => 'ESTADO  ACTUALIZADO CON EXITO!']);
+    }
+
+    public function buscar(Request $request)
+    {
+        
+        if (request()->ajax()) {
+            $menus=Menu::getAllId($request->menu_id);
+            $productos = Producto::all();  
+            $grupos = GrupoEtario::all();  
+              
+            return response()->view('ajax.buscar-menu', compact('menus', 'grupos', 'productos'));
+        }
+
     }
 }

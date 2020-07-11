@@ -38,14 +38,14 @@ class Menu extends Model
         return $this->belongsTo('App\Models\DetalleMenu');
     }
 
-    public static function filtro($jornada, $tipo, $grupo){
+    public static function filtro($jornada, $grupo){
         $resul = DB::table('detalle_menus as dm')
         ->join('menus as m', 'm.id', '=', 'dm.menu_id')
-        ->join('productos as p', 'p.id', '=', 'dm.producto_id')        
-        ->select("p.nombre as producto", "dm.cantidad", "m.id", 'dm.producto_id as producto_id')
-        ->where('m.jornada_id', $jornada)
-        ->where('m.tipo_complemento_id', $tipo)
-        ->where('m.grupo_etario_id', $grupo)
+        ->join('productos as p', 'p.id', '=', 'dm.producto_id')
+        ->join('grupo_etarios as ge', 'ge.id', '=', 'dm.grupo_etario_id')
+        ->select("p.nombre as producto", "ge.rango", "dm.cantidad", "m.id", 'dm.producto_id as producto_id')
+        ->where('m.jornada_id', $jornada)       
+        ->where('dm.grupo_etario_id', $grupo)
         ->orderBy('m.id', 'asc')
         ->get();
         return $resul;
@@ -61,6 +61,20 @@ class Menu extends Model
         ->first();
         return $resul->cantidad;
     }
+
+    public static function getAllId($id){
+        $resul = DB::table('detalle_menus as dm')
+        ->join('menus as m', 'm.id', '=', 'dm.menu_id')
+        ->join('productos as p', 'p.id', '=', 'dm.producto_id')
+        ->join('grupo_etarios as ge', 'ge.id', '=', 'dm.grupo_etario_id')
+        ->select( "ge.id as grupo_id", "dm.cantidad", "m.id", 'dm.producto_id as producto_id')
+        ->where('m.id', $id)      
+        ->orderBy('m.id', 'asc')
+        ->get();
+        return $resul;
+    }
+
+    
    
 
     

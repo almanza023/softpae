@@ -25,10 +25,16 @@ Route::resource('instituciones', 'InstitucionController');
 Route::resource('beneficiarios', 'BeneficiarioController');
 Route::resource('menus', 'MenuController');
 Route::resource('minutas', 'MinutaController');
+Route::resource('calculos', 'CalculoController');
+
+//select dinamicos
+Route::get('menus/select/{jornada}', 'MenuController@getMenus');
 
 
 //filtros
 Route::get('filtro/menus', 'MinutaController@filtro')->name('menu.filtro');
+Route::get('buscar/menu', 'MenuController@buscar')->name('buscar.menu');
+Route::get('buscar/calculos', 'CalculoController@buscar')->name('buscar.calculos');
 
 //estados
 Route::get('jornadas/estado/{id}', 'JornadaController@change')->name('jornadas.status');
