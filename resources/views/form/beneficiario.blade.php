@@ -6,12 +6,22 @@
     <label>Institución (*)</label>
     <div>
         <select name="institucion_id" id="institucion_id" class="form-control">
+            <option value="0">Seleccione</option>
             @foreach ($instituciones as $item)
                 <option value="{{ $item->id }}">{{ $item->nombre }}</option>$
             @endforeach
         </select>
     </div>
 </div>  
+
+<div class="form-group">
+    <label>Sede (*)</label>
+    <div>
+        <select name="sede_id" id="sede_id" class="form-control">
+           
+        </select>
+    </div>
+</div> 
 
 <div class="form-group">
     <label>Jornada (*)</label>

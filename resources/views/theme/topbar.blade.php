@@ -2,7 +2,7 @@
 
     <!-- LOGO -->
     <div class="topbar-left">
-        <a href="index.html" class="logo">
+        <a href="{{ route('home')}}" class="logo">
             <span>
                 <img src="{{ asset('theme/agroxa/assets/images/logo.png') }}" alt="" height="24">
             </span>
@@ -15,14 +15,7 @@
     <nav class="navbar-custom">
 
         <ul class="navbar-right d-flex list-inline float-right mb-0">
-            <li class="dropdown notification-list d-none d-sm-block">
-                <form role="search" class="app-search">
-                    <div class="form-group mb-0"> 
-                        <input type="text" class="form-control" placeholder="Search..">
-                        <button type="submit"><i class="fa fa-search"></i></button>
-                    </div>
-                </form> 
-            </li>
+            
 
             <li class="dropdown notification-list">
                 <a class="nav-link dropdown-toggle arrow-none waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
@@ -95,15 +88,15 @@
             <li class="d-none d-sm-block">
                 <div class="dropdown pt-3 d-inline-block">
                     <a class="btn btn-header waves-effect waves-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Create New
+                        Accesos DIrectos
                     </a>
                     
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Separated link</a>
+                        <a class="dropdown-item" href="{{ route('beneficiarios.index')}}">Beneficiarios</a>
+                        <a class="dropdown-item" href="{{ route('menus.create')}}">Crear Menú</a>
+                        <a class="dropdown-item" href="{{ route('minutas.index')}}">Consultar Minuta</a>
+                        <a class="dropdown-item" href="{{ route('calculos.create')}}">Crear Cálculos</a>
+                      
                     </div>
                 </div>
             </li>

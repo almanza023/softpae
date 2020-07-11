@@ -15,7 +15,9 @@
         @foreach ($beneficiarios as $item)
             <tr>
                 <td>{{ $loop->iteration }}</td>
-                <td>{{ $item->institucion->nombre }}</td>
+                <td>{{ $item->sede->institucion->nombre }}
+                    <li>{{ $item->sede->nombre }}</li>
+                </td>
                 <td>{{ $item->tipo_complemento->nombre }}</td>
                 <td>{{ $item->grupo_etario->rango }}</td>
                 <td>{{ $item->cantidad }}</td>

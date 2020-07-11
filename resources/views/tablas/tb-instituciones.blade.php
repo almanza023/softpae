@@ -5,6 +5,7 @@
             <th>Nombre</th>
             <th>Nit</th>
             <th>Contacto</th>            
+            <th>Sedes</th>  
             <th>Municipio</th>           
             <th>Estado</th>
             <th>Opciones</th>                           
@@ -17,7 +18,14 @@
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $item->nombre }}</td>
                 <td>{{ $item->nit }}</td>
-                <td>{{ $item->contacto }}</td>               
+                <td>{{ $item->contacto }}</td>  
+                <td>   
+                @foreach ($item->sedes_institucion as $s)
+                
+                <li>{{ $s->nombre }}</li>
+
+                @endforeach
+            </td>
                 <td>{{ $item->municipio->nombre }}</td>               
                 <td>
                     @if($item->estado==1)

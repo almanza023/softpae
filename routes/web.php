@@ -29,6 +29,7 @@ Route::resource('calculos', 'CalculoController');
 
 //select dinamicos
 Route::get('menus/select/{jornada}', 'MenuController@getMenus');
+Route::get('sedes/select/{id}', 'InstitucionController@getSedes');
 
 
 //filtros
@@ -44,3 +45,7 @@ Route::get('grupo_etarios/estado/{id}', 'GrupoEtarioController@change')->name('g
 Route::get('productos/estado/{id}', 'ProductoController@change')->name('productos.status');
 Route::get('instituciones/estado/{id}', 'InstitucionController@change')->name('institucion.status');
 Route::get('beneficiarios/estado/{id}', 'BeneficiarioController@change')->name('beneficiario.status');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

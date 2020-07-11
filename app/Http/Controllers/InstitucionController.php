@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Institucion;
 use App\Models\Municipio;
+use App\Models\Sede;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class InstitucionController extends Controller
 {
@@ -17,9 +19,6 @@ class InstitucionController extends Controller
     public function index()
     {
         $instituciones=Institucion::all();
-        $municipios=Municipio::all();
-        
-
         if (request()->ajax()) {
             $instituciones=Institucion::all();
             /*si los campos estan vacios mostrar mj de error, sino retornar vista. */
@@ -29,7 +28,7 @@ class InstitucionController extends Controller
                 return response()->view('tablas.tb-instituciones', compact('instituciones'));
             }
         }
-        return view('instituciones.index', compact('instituciones', 'municipios'));
+        return view('instituciones.index', compact('instituciones'));
     }
 
     /**
@@ -39,7 +38,10 @@ class InstitucionController extends Controller
      */
     public function create()
     {
-        //
+        $municipios=Municipio::all();
+        return view('instituciones.create', compact('municipios'));
+
+
     }
 
     /**
@@ -50,11 +52,36 @@ class InstitucionController extends Controller
      */
     public function store(Request $request)
     {
-    
-       $exito= Institucion::create($request->all());
-        if($exito){
-            return response()->json(['success' => 'INSTITUCION CREADA CON EXITO!']);
+
+       
+    DB::beginTransaction();
+       try {
+        $institucion= Institucion::create($request->all());
+        $sede = new Sede();
+        $sede->institucion_id=$institucion->id;                 
+        $sede->nombre='PRINCIPAL';             
+        $sede->save();
+            
+        if($request->sedes==1){
+            $sedes=$request->nombres_sedes;   
+            for ($i = 0; $i < (count($sedes)); $i++) {                    
+                $sede = new Sede();
+                $sede->institucion_id=$institucion->id;                 
+                $sede->nombre=$sedes[$i];             
+                $sede->save();       
+            }
         }
+          
+
+           DB::commit();
+           return response()->json(['success' => 'INSTITUCION CREADA EXTIOSAMENTE.']);
+       } catch (\Exception $ex) {
+           DB::rollback();
+           return response()->json(['warning' => $ex->getMessage()]);
+    }
+    
+     
+        
     }
 
     /**
@@ -119,5 +146,14 @@ class InstitucionController extends Controller
             $institucion->update(['estado' => 1]);
         }
         return response()->json(['success' => 'ESTADO DE INSTITUCION ACTUALIZADO CON EXITO!']);
+    }
+
+    public function getSedes($id)
+    {
+       
+        if(request()->ajax()){
+            $resul=Sede::where('institucion_id', $id)->get();
+            return response()->json($resul);
+        }
     }
 }

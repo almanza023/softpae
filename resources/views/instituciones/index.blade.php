@@ -9,11 +9,11 @@
         <div class="card m-b-20">
             <div class="card-body">
                 <h3 class="mt-0 header-title text-center">MODÚLO DE INSTITUCIONES</h3>     
-                <button type="button" class="btn btn-primary waves-effect waves-light" 
-                data-toggle="modal" data-target="#modalCreate">
+                <a href="{{ route('instituciones.create') }}" class="btn btn-primary waves-effect waves-light" 
+              >
                    <i class="fa fa-newspaper"></i> CREAR 
-                </button>
-                </p>
+            </a><br>
+                
 
                <div id="id_table">
                 @include('tablas.tb-instituciones')
@@ -26,8 +26,7 @@
     
 </div>
 <form id="form_hidden" style="display:none" action="{{route('instituciones.index')}}" method="GET"><input type="hidden" name="opcion" value="ok"></form>
-@include('modals.create-institucion')
-@include('modals.edit-institucion')
+
 @endsection
 
 

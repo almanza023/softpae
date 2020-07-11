@@ -1,5 +1,5 @@
 $(function() {
-
+    $('#group-sedes').hide();
     $('form').parsley();
     $("#form_create").submit(function(event) {
         event.preventDefault();
@@ -11,10 +11,15 @@ $(function() {
         update();
     });
     showEdit();
+
+    $("#sedes").change(function(event) {
+        if (event.target.value == 0) {
+            $('#group-sedes').hide();
+        } else {
+            $('#group-sedes').show();
+        }
+    })
 });
-
-
-
 
 //guardar en el form
 const save = () => {
