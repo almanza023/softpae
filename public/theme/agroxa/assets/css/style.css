@@ -1105,7 +1105,7 @@ dt {
 
 /************* page title *************/
 .page-title-box {
-  background: url("../images/bg.jpg");
+  background: url("../images/banner.png");
   margin: 0 -30px 23px -30px;
   padding: 20px 30px 100px 30px;
   -webkit-box-shadow: 0 2px 3px rgba(0, 0, 0, 0.08);
@@ -3707,7 +3707,7 @@ Invoice
 }
 
 .account-pages {
-  background: url("../images/bg.jpg");
+  background: url("../images/fondopae.png");
   position: absolute;
   background-size: cover;
   height: 100%;

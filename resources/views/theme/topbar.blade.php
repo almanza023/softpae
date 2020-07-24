@@ -1,13 +1,13 @@
 <div class="topbar">
 
     <!-- LOGO -->
-    <div class="topbar-left">
+    <div class="topbar-left" >
         <a href="{{ route('home')}}" class="logo">
-            <span>
-                <img src="{{ asset('theme/agroxa/assets/images/logo.png') }}" alt="" height="24">
+            <span align="center">
+                <img src="{{ asset('theme/agroxa/assets/images/LOGOSOFTPAE.png') }}" alt="" height="70">
             </span>
             <i>
-                <img src="{{ asset('theme/agroxa/assets/images/logo-sm.png') }}" alt="" height="22">
+                <img src="{{ asset('theme/agroxa/assets/images/LOGOSOFTPAE.png') }}" alt="" height="30">
             </i>
         </a>
     </div>
@@ -17,62 +17,22 @@
         <ul class="navbar-right d-flex list-inline float-right mb-0">
             
 
-            <li class="dropdown notification-list">
-                <a class="nav-link dropdown-toggle arrow-none waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                    <i class="mdi mdi-bell noti-icon"></i>
-                    <span class="badge badge-pill badge-info noti-icon-badge">3</span>
-                </a>
-                <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg">
-                    <!-- item-->
-                    <h6 class="dropdown-item-text">
-                        Notifications (37)
-                    </h6>
-                    <div class="slimscroll notification-item-list">
-                        <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item active">
-                            <div class="notify-icon bg-success"><i class="mdi mdi-cart-outline"></i></div>
-                            <p class="notify-details">Your order is placed<span class="text-muted">Dummy text of the printing and typesetting industry.</span></p>
-                        </a>
-                        <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item">
-                            <div class="notify-icon bg-warning"><i class="mdi mdi-message"></i></div>
-                            <p class="notify-details">New Message received<span class="text-muted">You have 87 unread messages</span></p>
-                        </a>
-                        <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item">
-                            <div class="notify-icon bg-info"><i class="mdi mdi-flag"></i></div>
-                            <p class="notify-details">Your item is shipped<span class="text-muted">It is a long established fact that a reader will</span></p>
-                        </a>
-                        <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item">
-                            <div class="notify-icon bg-primary"><i class="mdi mdi-cart-outline"></i></div>
-                            <p class="notify-details">Your order is placed<span class="text-muted">Dummy text of the printing and typesetting industry.</span></p>
-                        </a>
-                        <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item">
-                            <div class="notify-icon bg-danger"><i class="mdi mdi-message"></i></div>
-                            <p class="notify-details">New Message received<span class="text-muted">You have 87 unread messages</span></p>
-                        </a>
-                    </div>
-                    <!-- All-->
-                    <a href="javascript:void(0);" class="dropdown-item text-center text-primary">
-                        View all <i class="fi-arrow-right"></i>
-                    </a>
-                </div>        
-            </li>
+           
             <li class="dropdown notification-list">
                 <div class="dropdown notification-list nav-pro-img">
                     <a class="dropdown-toggle nav-link arrow-none waves-effect nav-user waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                        <img src="{{ asset('theme/agroxa/assets/images/users/user-4.jpg') }}" alt="user" class="rounded-circle">
+                        <img src="{{ asset('theme/agroxa/assets/images/profile.png') }}" alt="user" class="rounded-circle">
                     </a>
                     <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
                         <!-- item-->
-                        <a class="dropdown-item" href="#"><i class="mdi mdi-account-circle m-r-5"></i> Profile</a>
-                        <a class="dropdown-item" href="#"><i class="mdi mdi-wallet m-r-5"></i> My Wallet</a>
-                        <a class="dropdown-item d-block" href="#"><span class="badge badge-success float-right">11</span><i class="mdi mdi-settings m-r-5"></i> Settings</a>
-                        <a class="dropdown-item" href="#"><i class="mdi mdi-lock-open-outline m-r-5"></i> Lock screen</a>
+                        <a class="dropdown-item" href="#"><i class="mdi mdi-account-circle m-r-5"></i> Perfil</a>
+                        <a class="dropdown-item d-block" href="#"><i class="mdi mdi-settings m-r-5"></i> Cuenta</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item text-danger" href="#"><i class="mdi mdi-power text-danger"></i> Salir</a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" >
+                            @csrf
+                            <a id="btn-salir" class="dropdown-item text-danger"  >  <i class="mdi mdi-power text-danger"></i> </i> Cerrar Sesión</a>
+                          </form>
+                        
                     </div>                                                                    
                 </div>
             </li>
@@ -88,14 +48,14 @@
             <li class="d-none d-sm-block">
                 <div class="dropdown pt-3 d-inline-block">
                     <a class="btn btn-header waves-effect waves-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Accesos DIrectos
+                        Accesos Directos
                     </a>
                     
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <a class="dropdown-item" href="{{ route('beneficiarios.index')}}">Beneficiarios</a>
-                        <a class="dropdown-item" href="{{ route('menus.create')}}">Crear Menú</a>
-                        <a class="dropdown-item" href="{{ route('minutas.index')}}">Consultar Minuta</a>
-                        <a class="dropdown-item" href="{{ route('calculos.create')}}">Crear Cálculos</a>
+                        <a class="dropdown-item" href="{{ route('beneficiarios.index')}}"><i class="fa fa-child"></i> Beneficiarios</a>
+                        <a class="dropdown-item" href="{{ route('menus.create')}}"><i class="fa fa-clipboard"></i> Crear Menú</a>
+                        <a class="dropdown-item" href="{{ route('minutas.index')}}"><i class="fa fa-file"></i> Consultar Minuta</a>
+                        <a class="dropdown-item" href="{{ route('calculos.create')}}"><i class="fa fa-calculator"></i> Crear Cálculos</a>
                       
                     </div>
                 </div>

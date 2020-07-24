@@ -14,7 +14,8 @@
                     <div class="table-responsive">
                      <table class="table">
                          <tr>
-                             <th>JORNADA</th>                                            
+                             <th>JORNADA</th>   
+                             <th></th>                                         
                          </tr>
                          <tr>
                              <td>
@@ -26,7 +27,7 @@
                              </td>
                              
                             <td>
-                                <button type="button" id="buscar" class="btn btn-outline-primary btn-sm">Buscar</button>
+                                <button type="button" id="buscar" class="btn btn-outline-info"><i class="fa fa-search"></i> Buscar</button>
                             </td>
                          </tr>
                      </table>
@@ -46,7 +47,7 @@
     <div class="col-12">
         <div class="card m-b-20">
             <div class="card-body">
-                <h3 class="mt-0 header-title text-center">DETALLES DE MENÚ</h3>     
+                <h3 class="mt-0 header-title text-center"><img src="{{ asset('theme/agroxa/assets/images/6.png')}}" height="32px"> DETALLES DE MENÚ</h3>     
                
                     <div class="table-responsive">
                      <table class="table table-bordered">
@@ -79,7 +80,7 @@
                      </table>
                     </div>
 
-                    <button type="submit" class="btn btn-outline-success">GUARDAR</button>
+                    <p class="text-center"><button type="submit" class="btn btn-outline-info"><i class="fa fa-save"></i> Guardar</button></p>
                 </form>
 
                

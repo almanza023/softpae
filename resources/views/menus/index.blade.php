@@ -8,10 +8,11 @@
     <div class="col-12">
         <div class="card m-b-20">
             <div class="card-body">
-                <h3 class="mt-0 header-title text-center">MODÚLO DE MENÚS</h3>     
-                <a href="{{ route('menus.create') }}" class="btn btn-primary waves-effect waves-light" 
+                <h3 class="mt-0 header-title text-center">MODÚLO DE MENÚS</h3> 
+                 <br>   <div align="center"><img src="{{ asset('theme/agroxa/assets/images/MENU.png')}}" height="250px" class=""></div><br>
+                <p class="text-center"><a href="{{ route('menus.create') }}" class="btn btn-outline-info waves-effect waves-light" 
                 >
-                   <i class="fa fa-newspaper"></i> CREAR 
+                   <i class="fa fa-plus-circle"></i> Agregar Menú 
                 </a>
                 </p>
 

@@ -9,7 +9,7 @@
         <title>INICIO DE SESIÓN</title>
         <meta content="Admin Dashboard" name="description" />
         <meta content="PARQUESOFT" name="author" />
-        <link rel="shortcut icon" href="assets/images/favicon.ico">
+        <link rel="shortcut icon" href="assets/images/LOGOSOFTPAE.png">
         <link href="{{ asset('theme/agroxa/assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
         <link href="{{ asset('theme/agroxa/assets/css/metismenu.min.css') }}" rel="stylesheet" type="text/css">
         <link href="{{ asset('theme/agroxa/assets/css/icons.css') }}" rel="stylesheet" type="text/css">
@@ -27,17 +27,16 @@
                 <div class="card-body">
 
                     <h3 class="text-center m-0">
-                        <a href="index.html" class="logo logo-admin"><img src="{{ asset('theme/agroxa/assets/images/logo.png')}}" height="30" alt="logo"></a>
+                        <a href="index.html" class="logo logo-admin"><img src="{{ asset('theme/agroxa/assets/images/LOGOSOFTPAE.png')}}" height="130px" alt="logo"></a>
                     </h3>
 
                     <div class="p-3">
-                        <h4 class="text-muted font-18 m-b-5 text-center">Bienvenido !</h4>
                         <p class="text-muted text-center">Ingrese sus datos para iniciar sesión.</p>
 
                         <form class="form-horizontal m-t-30" action="{{ route('login')}}" method="POST">
                             @csrf
                             <div class="form-group">
-                                <label for="username">Usuario</label>
+                                <label for="username"><i class="fa fa-user" style="color:#35a989"></i> Usuario</label>
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
                                 @error('email')
@@ -48,7 +47,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="userpassword">Contraseña</label>
+                                <label for="userpassword"><i class="fa fa-lock" style="color:#35a989"></i> Contraseña</label>
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
 
                                 @error('password')
@@ -72,7 +71,7 @@
                                 </div>
                                 <div class="col-6 text-right">
                                     <button type="submit" class="btn btn-primary w-md waves-effect waves-light">
-                                        {{ __('Ingresar') }}
+                                        {{ __('Ingresar') }} <i class="fa fa-arrow-alt-circle-right"></i>
                                     </button>
                                    
                                 </div>
@@ -95,7 +94,7 @@
 
             <div class="m-t-40 text-center">
                
-                <p class="text-muted">© Sistema PAE <i class="mdi mdi-heart text-danger"></i> desarrollado por ParqueSoft Sucre</p>
+                <p style="color: #fff">© Sistema PAE desarrollado por ParqueSoft Sucre</p>
             </div>
 
         </div>

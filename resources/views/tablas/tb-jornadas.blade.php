@@ -17,9 +17,9 @@
                 <td>{{ $jornada->descripcion }}</td>
                 <td>
                     @if($jornada->estado)
-                    <button class="btn badge bg-gradient-warning sm" onclick="changeEstado('{{ route('jornadas.status', $jornada->id) }}'); ">Activo</button>
+                    <button class="btn badge bg-primary sm" style="color: #fff" onclick="changeEstado('{{ route('jornadas.status', $jornada->id) }}'); "><i class="fa fa-check"></i> Activo</button>
                     @else
-                    <button class="btn badge bg-gradient-info sm" onclick="changeEstado('{{ route('jornadas.status', $jornada->id) }}'); ">Inactivo</button>
+                    <button class="btn badge bg-danger sm" style="color: #fff" onclick="changeEstado('{{ route('jornadas.status', $jornada->id) }}'); "><i class="fa fa-ban"></i> Inactivo</button>
                     @endif
                 </td>
                 <td>
@@ -27,7 +27,7 @@
                     <div class="btn-group m-b-10">
                     <button type="button" class="btn btn-info waves-effect waves-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Opciones</button>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item show-details" data-toggle="modal" data-id="{{$jornada->id}}" data-nombre="{{$jornada->nombre}}" data-descripcion="{{$jornada->descripcion}}"  data-target="#modalEdit">Actualizar</a>
+                            <a class="dropdown-item show-details" data-toggle="modal" data-id="{{$jornada->id}}" data-nombre="{{$jornada->nombre}}" data-descripcion="{{$jornada->descripcion}}"  data-target="#modalEdit"><i class="fa fa-edit"></i> Actualizar</a>
                             
                         </div>
                     </div>

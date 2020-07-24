@@ -29,12 +29,12 @@
                         <hr>
                         <label>Agregar Sedes</label>
                         <div class="form-group">
-                            <label for="nombre">Nombre(*)</label>
+                            <label for="nombre">Nombre </label><label class="text-danger">(*)</label>
                             <input type="text" class="form-control" name="nombre_sede" id="nombre_sede">
                         </div>
                         <div class="form-group">
-                            <button id="bt_add" class="btn btn-success btn-sm"> <i class="fa fa-plus-circle"></i> Agregar</button>
-                            <button id="bt_del" class="btn btn-danger btn-sm"> <i class="fa fa-window-close"></i> Eliminar</button>
+                            <button id="bt_add" class="btn btn-outline-info btn-sm"> <i class="fa fa-plus-circle"></i> Agregar</button>
+                            <button id="bt_del" class="btn btn-outline-danger btn-sm"> <i class="fa fa-window-close"></i> Eliminar</button>
                         
                         </div>
                         <table id="tabla" class="table table-bordered">
@@ -49,9 +49,11 @@
                 </div>
                 
                
-                <div class="form-group">
-                    <button type="submit" class="btn btn-outline-secondary">GUARDAR</button>
-                </div>
+               <p class="text-center">
+                    
+                    <button type="submit" class="btn btn-outline-info"><i class="fa fa-save"></i> GUARDAR</button>
+               
+               </p>
                 </form>
 
              

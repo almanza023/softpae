@@ -12,15 +12,17 @@
         <div class="card m-b-20">
             <div class="card-body">
                 <h3 class="mt-0 header-title text-center">MODÚLO DE CALCULOS</h3>     
-                <a href="{{ route('calculos.create') }}" class="btn btn-primary waves-effect waves-light" 
+                <p class="text-center">
+                    <a href="{{ route('calculos.create') }}" class="btn btn-outline-info waves-effect waves-light" 
                 >
-                   <i class="fa fa-newspaper"></i> CREAR 
+                   <i class="fa fa-plus-circle"></i> Agregar  
                 </a>
 
-                <button type="button" class="btn btn-warning waves-effect waves-light" 
+                <button type="button" class="btn btn-outline-primary waves-effect waves-light" 
                 data-toggle="modal" data-target="#BuscarCalculo">
-                   <i class="fa fa-search-plus"></i> BUSCAR 
+                   <i class="fa fa-search-plus"></i> Buscar 
                 </button>
+                </p>
                
 
                

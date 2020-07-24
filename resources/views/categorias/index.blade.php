@@ -9,9 +9,9 @@
         <div class="card m-b-20">
             <div class="card-body">
                 <h3 class="mt-0 header-title text-center">MODÚLO DE CATEGORIAS</h3>     
-                <button type="button" class="btn btn-primary waves-effect waves-light" 
+                <button type="button" class="btn btn-outline-info waves-effect waves-light" 
                 data-toggle="modal" data-target="#modalCreate">
-                   <i class="fa fa-newspaper"></i> CREAR 
+                   <i class="fa fa-plus-circle"></i> Agregar Categoria 
                 </button>
                 </p>
 

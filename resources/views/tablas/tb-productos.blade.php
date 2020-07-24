@@ -21,9 +21,9 @@
                 <td>{{ $item->unidad->prefijo }}</td>
                 <td>
                     @if($item->estado==1)
-                    <button class="btn badge bg-gradient-warning sm" onclick="changeEstado('{{ route('productos.status', $item->id) }}'); ">Activo</button>
+                    <button class="btn badge bg-primary sm" style="color: #fff" onclick="changeEstado('{{ route('productos.status', $item->id) }}'); "><i class="fa fa-check"></i> Activo</button>
                     @else
-                    <button class="btn badge bg-gradient-info sm" onclick="changeEstado('{{ route('productos.status', $item->id) }}'); ">Inactivo</button>
+                    <button class="btn badge bg-danger sm" style="color: #fff" onclick="changeEstado('{{ route('productos.status', $item->id) }}'); "><i class="fa fa-ban"></i> Inactivo</button>
                     @endif
                 </td>
                 <td>
@@ -33,7 +33,7 @@
                         <div class="dropdown-menu"> 
                             <a class="dropdown-item show-details" data-toggle="modal" data-id="{{$item->id}}" data-nombre="{{$item->nombre}}" data-descripcion="{{$item->descripcion}}"
                                 data-categoria_id="{{$item->categoria_id}}" data-unidad_id="{{$item->unidad_id}}"
-                                data-target="#modalEdit">Actualizar</a>
+                                data-target="#modalEdit"><i class="fa fa-edit"></i> Actualizar</a>
                             
                         </div>
                     </div>

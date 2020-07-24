@@ -29,9 +29,9 @@
                 <td>{{ $item->municipio->nombre }}</td>               
                 <td>
                     @if($item->estado==1)
-                    <button class="btn badge bg-gradient-warning sm" onclick="changeEstado('{{ route('institucion.status', $item->id) }}'); ">Activo</button>
+                    <button class="btn badge bg-primary sm" style="color: #fff" onclick="changeEstado('{{ route('institucion.status', $item->id) }}'); "><i class="fa fa-check"></i> Activo</button>
                     @else
-                    <button class="btn badge bg-gradient-info sm" onclick="changeEstado('{{ route('institucion.status', $item->id) }}'); ">Inactivo</button>
+                    <button class="btn badge bg-danger sm" style="color: #fff" onclick="changeEstado('{{ route('institucion.status', $item->id) }}'); "><i class="fa fa-ban"></i>Inactivo</button>
                     @endif
                 </td>
                 <td>
@@ -42,7 +42,7 @@
                             <a class="dropdown-item show-details" data-toggle="modal" data-id="{{$item->id}}" data-nombre="{{$item->nombre}}" data-nit="{{$item->nit}}" 
                                 data-contacto="{{$item->contacto}}" data-correo="{{$item->correo}}" data-telefono="{{$item->telefono}}" data-direccion="{{$item->direccion}}"
                                 data-municipio_id="{{$item->municipio_id}}"
-                                data-target="#modalEdit">Actualizar</a>
+                                data-target="#modalEdit"><i class="fa fa-edit"></i> Actualizar</a>
                             
                         </div>
                     </div>

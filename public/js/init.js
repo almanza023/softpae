@@ -41,7 +41,7 @@ const success = (mensaje) => {
         text: `${mensaje}`,
         type: 'success',
         showCancelButton: true,
-        confirmButtonClass: 'btn btn-success'
+        confirmButtonClass: 'btn btn-primary'
 
     })
 
@@ -55,7 +55,7 @@ const warning = (mensaje) => {
         text: `${mensaje}`,
         type: 'warning',
         showCancelButton: true,
-        confirmButtonClass: 'btn btn-success',
+        confirmButtonClass: 'btn btn-primary',
         cancelButtonClass: 'btn btn-danger m-l-10'
 
     })
@@ -67,7 +67,7 @@ const error = (mensaje) => {
         text: `${mensaje}`,
         type: 'error',
         showCancelButton: true,
-        confirmButtonClass: 'btn btn-success',
+        confirmButtonClass: 'btn btn-primary',
         cancelButtonClass: 'btn btn-danger m-l-10'
 
     })
@@ -95,7 +95,7 @@ const showErrorMessage = (messages) => {
         html: messages,
         showCloseButton: true,
         showCancelButton: true,
-        confirmButtonClass: 'btn btn-success',
+        confirmButtonClass: 'btn btn-primary',
         cancelButtonClass: 'btn btn-danger m-l-10',
         confirmButtonText: '<i class="fa fa-thumbs-up"></i> Great!',
         cancelButtonText: '<i class="fa fa-thumbs-down"></i>'

@@ -9,10 +9,10 @@
         <div class="card m-b-20">
             <div class="card-body">
                 <h3 class="mt-0 header-title text-center">MODÚLO DE INSTITUCIONES</h3>     
-                <a href="{{ route('instituciones.create') }}" class="btn btn-primary waves-effect waves-light" 
+                <a href="{{ route('instituciones.create') }}" class="btn btn-outline-info waves-effect waves-light" 
               >
-                   <i class="fa fa-newspaper"></i> CREAR 
-            </a><br>
+                   <i class="fa fa-plus-circle"></i> Agregar Institución 
+            </a><br><br>
                 
 
                <div id="id_table">

@@ -13,9 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'Auth\LoginController@showLoginForm')->middleware('guest');
 Route::resource('jornadas', 'JornadaController');
 Route::resource('categorias', 'CategoriaController');
 Route::resource('unidades', 'UnidadController');
@@ -26,6 +24,8 @@ Route::resource('beneficiarios', 'BeneficiarioController');
 Route::resource('menus', 'MenuController');
 Route::resource('minutas', 'MinutaController');
 Route::resource('calculos', 'CalculoController');
+Route::resource('bodegas', 'BodegaController');
+Route::resource('productobodegas', 'ProductoBodegaController');
 
 //select dinamicos
 Route::get('menus/select/{jornada}', 'MenuController@getMenus');
@@ -45,6 +45,8 @@ Route::get('grupo_etarios/estado/{id}', 'GrupoEtarioController@change')->name('g
 Route::get('productos/estado/{id}', 'ProductoController@change')->name('productos.status');
 Route::get('instituciones/estado/{id}', 'InstitucionController@change')->name('institucion.status');
 Route::get('beneficiarios/estado/{id}', 'BeneficiarioController@change')->name('beneficiario.status');
+Route::get('bodegas/estado/{id}', 'BodegaController@change')->name('bodegas.status');
+Route::get('productobodegas/estado/{id}', 'ProductoBodegaController@change')->name('productobodegas.status');
 
 Auth::routes();
 

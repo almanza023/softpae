@@ -1,7 +1,7 @@
 @if($crear)
 
 <div class="form-group row">
-    <label for="example-text-input" class="col-sm-4 col-form-label">Nombre (*)</label>
+    <label for="example-text-input" class="col-sm-4 col-form-label">Nombre <label class="text-danger">(*)</label></label>
     <div class="col-sm-8">
         <input type="text" name="nombre" id="nombre" class="form-control" required placeholder="Nombre"/>
     </div>
@@ -9,14 +9,14 @@
             
 
 <div class="form-group row">
-    <label class="col-sm-4 col-form-label">Nit (*)</label>
+    <label class="col-sm-4 col-form-label">Nit <label class="text-danger">(*)</label></label>
     <div class="col-sm-8">
     <input type="text" name="nit" id="nit" class="form-control" required placeholder="Nit"/>
     </div>
 </div>   
 
 <div class="form-group row">
-    <label class="col-sm-4 col-form-label">Contacto (*)</label>
+    <label class="col-sm-4 col-form-label">Contacto <label class="text-danger">(*)</label></label>
     <div class="col-sm-8">
     <input type="text" name="contacto" id="contacto" class="form-control" required placeholder="Contacto"/>
     </div>

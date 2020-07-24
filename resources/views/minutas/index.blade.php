@@ -15,7 +15,8 @@
                          <tr>
                              <th>JORNADA</th>                            
                              <th>TIPO COMPLEMENTO</th> 
-                             <th>GRUPO ETARIO</th>                           
+                             <th>GRUPO ETARIO</th>  
+                             <th></th>                         
                          </tr>
                          <tr>
                              <td>
@@ -40,7 +41,7 @@
                                 </select>
                             </td>
                             <td>
-                                <button type="button" id="buscar" class="btn btn-outline-primary btn-sm">Buscar</button>
+                                <button type="button" id="buscar" class="btn btn-outline-info"><i class="fa fa-search"></i> Buscar</button>
                             </td>
                          </tr>
                      </table>

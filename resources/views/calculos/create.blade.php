@@ -21,7 +21,8 @@
                          <tr>
                              <th>JORNADA</th>                                                         
                              <th>MENU</th>                            
-                             <th>DÍA</th>                            
+                             <th>DÍA</th>  
+                             <th></th>                          
                          </tr>
                          <tr>
                              <td>
@@ -48,9 +49,9 @@
                                 </select>
                             </td>
                             <td>
-                                <button type="button" id="buscar" class="btn btn-outline-primary btn-sm">Buscar</button>
+                                <button type="button" id="buscar" class="btn btn-outline-info"><i class="fa fa-search"></i> Buscar</button>
                             
-                                <button type="button" id="cerrar" class="btn btn-outline-danger btn-sm">Cerrar</button>
+                                <button type="button" id="cerrar" class="btn btn-outline-danger"><i class="fa fa-window-close"></i> Cerrar</button>
                             </td>
                          </tr>
                        
@@ -62,8 +63,8 @@
                 </form>
                 <div class="row">
                     <div class="col-md-12">
-                        <button id="bt_add" class="btn btn-success btn-sm"> <i class="fa fa-plus-circle"></i> Agregar</button>
-                        <button id="bt_del" class="btn btn-danger btn-sm"> <i class="fa fa-window-close"></i> Eliminar</button>
+                        <button id="bt_add" class="btn btn-outline-info btn-sm"> <i class="fa fa-plus-circle"></i> Agregar</button>
+                        <button id="bt_del" class="btn btn-outline-danger btn-sm"> <i class="fa fa-recycle"></i> Eliminar</button>
                     </div>
                 </div>
                     
@@ -96,7 +97,7 @@
                         </tr>
                     </thead>
                 </table>
-                <button class="btn btn-outline-primary" type="submit" id="guardar">GUARDAR</button>
+                <p class="text-center"><button class="btn btn-outline-info" type="submit" id="guardar"><i class="fa fa-save"></i> Guardar</button></p>
                 </div>
             </form>
             

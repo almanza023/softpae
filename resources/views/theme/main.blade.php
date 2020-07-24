@@ -30,7 +30,7 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="page-title-box">
-                                    <h4 class="page-title">Sistema de Gestión del PAE</h4>                             
+                                    <h4 class="page-title" align="right" >Sistema de Gestión del PAE</h4>                             
                                 </div>
                             </div>
                         </div>
@@ -57,6 +57,7 @@
           @include('theme.scripts-tablas')
         @endif
         <script src="{{ asset('js/init.js') }}"></script>
+        <script src="{{ asset('js/Salir.js') }}"></script>
         @yield('scripts')
     </body>
 </html>

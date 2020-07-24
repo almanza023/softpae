@@ -3,7 +3,7 @@
 
 
 <div class="form-group">
-    <label>Institución (*)</label>
+    <label>Institución <label class="text-danger">(*)</label></label>
     <div>
         <select name="institucion_id" id="institucion_id" class="form-control">
             <option value="0">Seleccione</option>
@@ -15,7 +15,7 @@
 </div>  
 
 <div class="form-group">
-    <label>Sede (*)</label>
+    <label>Sede <label class="text-danger">(*)</label></label>
     <div>
         <select name="sede_id" id="sede_id" class="form-control">
            
@@ -24,7 +24,7 @@
 </div> 
 
 <div class="form-group">
-    <label>Jornada (*)</label>
+    <label>Jornada <label class="text-danger">(*)</label></label>
     <div>
         <select name="jornada_id" id="jornada_id" class="form-control">
             @foreach ($jornadas as $item)
@@ -35,7 +35,7 @@
 </div>
 
 <div class="form-group">
-    <label>Grupo Etario (*)</label>
+    <label>Grupo Etario <label class="text-danger">(*)</label></label>
     <div>
         <select name="grupo_etario_id" id="grupo_etario_id" class="form-control">
             @foreach ($grupos as $item)
@@ -46,7 +46,7 @@
 </div>
 
 <div class="form-group">
-    <label>Tipo Complemento (*)</label>
+    <label>Tipo Complemento <label class="text-danger">(*)</label></label>
     <div>
         <select name="tipo_complemento_id" id="tipo_complemento_id" class="form-control">
             @foreach ($tipos as $item)
@@ -67,7 +67,7 @@
 
 
 <div class="form-group">
-    <label>Institución (*)</label>
+    <label>Institución <label class="text-danger">(*)</label></label>
     <div>
         <select name="institucion_id" id="institucion_id_e" class="form-control">
             @foreach ($instituciones as $item)
@@ -78,7 +78,7 @@
 </div>  
 
 <div class="form-group">
-    <label>Jornada (*)</label>
+    <label>Jornada <label class="text-danger">(*)</label></label>
     <div>
         <select name="jornada_id" id="jornada_id_e" class="form-control">
             @foreach ($jornadas as $item)
@@ -89,7 +89,7 @@
 </div>
 
 <div class="form-group">
-    <label>Grupo Etario (*)</label>
+    <label>Grupo Etario <label class="text-danger">(*)</label></label>
     <div>
         <select name="grupo_etario_id" id="grupo_etario_id_e" class="form-control">
             @foreach ($grupos as $item)
@@ -100,7 +100,7 @@
 </div>
 
 <div class="form-group">
-    <label>Tipo Complemento (*)</label>
+    <label>Tipo Complemento <label class="text-danger">(*)</label></label>
     <div>
         <select name="tipo_complemento_id" id="tipo_complemento_id_e" class="form-control">
             @foreach ($tipos as $item)
