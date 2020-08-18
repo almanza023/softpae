@@ -25,6 +25,7 @@
                     <a href="{{ route('calculos.index') }}" class="waves-effect"><i class="fa fa-calculator"></i><span> Calculos </span></a>
                 </li>
                 <li><a href="{{ route('pedidomen.index') }}"><i class="fa fa-paper-plane"></i><span> Pedidos </span></a></li>
+                <li><a href="{{ route('kardex.index') }}"><i class="fa fa-paper-plane"></i><span> Kardex </span></a></li>
                 <li>
                     <a href="{{ route('usuarios.index') }}" class="waves-effect"><i class="fa fa-user-circle"></i><span> Usuarios </span></a>
                 </li>

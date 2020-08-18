@@ -30,6 +30,7 @@ Route::resource('cajm', 'CalculoCAJMController');
 Route::resource('usuarios', 'UsuarioController');
 Route::resource('empresa', 'EmpresaController');
 Route::resource('pedidomen', 'PedidoMenController');
+Route::resource('kardex', 'KardexController');
 
 
 //select dinamicos
@@ -43,6 +44,7 @@ Route::get('buscar/menu', 'MenuController@buscar')->name('buscar.menu');
 Route::get('buscar/calculos', 'CalculoController@buscar')->name('buscar.calculos');
 Route::get('filtro/cajm', 'CalculoCAJMController@filtro')->name('cajm.filtro');
 Route::get('filtro/pedidomen', 'PedidoMenController@filtro')->name('pedidomen.filtro');
+Route::get('filtro/kardex', 'KardexController@filtro')->name('kardex.filtro');
 
 //estados
 Route::get('jornadas/estado/{id}', 'JornadaController@change')->name('jornadas.status');
