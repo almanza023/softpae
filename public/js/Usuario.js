@@ -1,37 +1,16 @@
 $(function() {
-    $('#datos').hide();
 
+    $('form').parsley();
     $("#form_create").submit(function(event) {
         event.preventDefault();
-        swal({
-            title: 'Confirmación',
-            text: "¿Está seguro de guardar la información ?",
-            type: 'warning',
-            showCancelButton: true,
-            confirmButtonText: 'Si',
-            cancelButtonText: 'No',
-            confirmButtonClass: 'btn btn-primary',
-            cancelButtonClass: 'btn btn-danger m-l-10',
-            buttonsStyling: false
-        }).then(function() {
-            save();
-        }, function(dismiss) {
-
-        })
-
+        save();
     });
 
     $("#form_edit").submit(function(event) {
         event.preventDefault();
         update();
     });
-
-
-    $("#buscar").click(function() {
-        $('#datos').show();
-    });
-
-
+    showEdit();
 });
 
 //guardar en el form
@@ -43,15 +22,20 @@ const save = () => {
         type: form.attr('method'),
         dataType: 'json',
         success: function(data) {
+
             if (data.success) {
+
                 success(data.success);
                 $('#form_create')[0].reset();
-                $('#datos').hide();
+                updateTable();
             } else {
                 warning(data.warning);
+
             }
+
         },
         error: function(data) {
+
             if (data.status === 422) {
                 let errors = $.parseJSON(data.responseText);
                 addErrorMessage(errors);
@@ -70,6 +54,7 @@ const update = () => {
         type: form.attr('method'),
         dataType: 'json',
         success: function(data) {
+
             if (data.success) {
                 success(data.success);
                 $('#modalEdit').modal('hide');
@@ -80,6 +65,7 @@ const update = () => {
 
         },
         error: function(data) {
+
             if (data.status === 422) {
                 let errors = $.parseJSON(data.responseText);
                 addErrorMessage(errors);
@@ -87,4 +73,50 @@ const update = () => {
         }
     });
 
+}
+
+
+const showEdit = () => {
+    $('#modalEdit').on('show.bs.modal', function(event) {
+        let button = $(event.relatedTarget)
+        let id = button.data('id');
+        let nombres = button.data('nombres');
+        let apellidos = button.data('apellidos');
+        let direccion = button.data('direccion');
+        let telefono = button.data('telefono');
+        let correo = button.data('correo');
+        let usuario = button.data('usuario');
+        let rol = button.data('rol');
+        let modal = $(this);
+
+        modal.find('.modal-body #id').val(id);
+        modal.find('.modal-body #nombres_e').val(nombres);
+        modal.find('.modal-body #apellidos_e').val(apellidos);
+         modal.find('.modal-body #direccion_e').val(direccion);
+          modal.find('.modal-body #telefono_e').val(telefono);
+            modal.find('.modal-body #correo_e').val(correo);
+            modal.find('.modal-body #usuario_e').val(usuario);
+             modal.find('.modal-body #rol_e').val(rol);
+       
+
+    });
+}
+
+//FUNCION DE ESTADOS
+const changeEstado = (url) => {
+    $.ajax({
+        url: url,
+        type: 'GET',
+        dataType: 'json',
+        success: function(data) {
+
+            if (data.success) {
+                success(data.success);
+                updateTable();
+            } else {
+                warning(data.warning);
+            }
+
+        },
+    });
 }

@@ -25,6 +25,9 @@
                     <a href="{{ route('calculos.index') }}" class="waves-effect"><i class="fa fa-calculator"></i><span> Calculos </span></a>
                 </li>
                 <li>
+                    <a href="{{ route('usuarios.index') }}" class="waves-effect"><i class="fa fa-user-circle"></i><span> Usuarios </span></a>
+                </li>
+                <li>
                     <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-black-mesa"></i> <span> Configuraciones <span class="float-right menu-arrow"><i class="mdi mdi-plus"></i></span> </span> </a>
                     <ul class="submenu">
                         <li><a href="{{ route('unidades.index') }}"><i class="fa fa-percent"></i><span>  Unidades </span></a></li>
@@ -33,7 +36,8 @@
                         <li><a href="{{ route('categorias.index') }}"><i class="fa fa-bookmark"></i><span>  Categorias </span></a></li>
                         <li><a href="{{ route('jornadas.index') }}"><i class="fa fa-calendar"></i><span>  Jornadas </span></a></li>
                         <li><a href="{{ route('bodegas.index') }}"><i class="fa fa-calendar"></i><span>  Bodegas </span></a></li>
-                         <li><a href="{{ route('productobodegas.index') }}"><i class="fa fa-calendar"></i><span> Productos en Bodegas </span></a></li>
+                        <li><a href="{{ route('productobodegas.index') }}"><i class="fa fa-calendar"></i><span> Productos en Bodegas </span></a></li>
+                       
                     </ul>
                 </li>
                

@@ -26,6 +26,10 @@ Route::resource('minutas', 'MinutaController');
 Route::resource('calculos', 'CalculoController');
 Route::resource('bodegas', 'BodegaController');
 Route::resource('productobodegas', 'ProductoBodegaController');
+Route::resource('cajm', 'CalculoCAJMController');
+Route::resource('usuarios', 'UsuarioController');
+Route::resource('empresa', 'EmpresaController');
+
 
 //select dinamicos
 Route::get('menus/select/{jornada}', 'MenuController@getMenus');
@@ -36,6 +40,7 @@ Route::get('sedes/select/{id}', 'InstitucionController@getSedes');
 Route::get('filtro/menus', 'MinutaController@filtro')->name('menu.filtro');
 Route::get('buscar/menu', 'MenuController@buscar')->name('buscar.menu');
 Route::get('buscar/calculos', 'CalculoController@buscar')->name('buscar.calculos');
+Route::get('filtro/cajm', 'CalculoCAJMController@filtro')->name('cajm.filtro');
 
 //estados
 Route::get('jornadas/estado/{id}', 'JornadaController@change')->name('jornadas.status');
@@ -47,6 +52,8 @@ Route::get('instituciones/estado/{id}', 'InstitucionController@change')->name('i
 Route::get('beneficiarios/estado/{id}', 'BeneficiarioController@change')->name('beneficiario.status');
 Route::get('bodegas/estado/{id}', 'BodegaController@change')->name('bodegas.status');
 Route::get('productobodegas/estado/{id}', 'ProductoBodegaController@change')->name('productobodegas.status');
+Route::get('usuarios/estado/{id}', 'UsuarioController@change')->name('usuarios.status');
+Route::get('empresa/estado/{id}', 'EmpresaController@change')->name('empresa.status');
 
 Auth::routes();
 

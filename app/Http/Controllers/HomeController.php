@@ -32,6 +32,6 @@ class HomeController extends Controller
         $instituciones=Institucion::where('estado', '1')->count();
         $usuarios=User::count();
         return view('home', compact('productos', 'instituciones', 'menus', 'usuarios'));
-        
+
     }
 }

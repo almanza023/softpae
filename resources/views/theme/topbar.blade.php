@@ -20,15 +20,15 @@
            
             <li class="dropdown notification-list">
                 <div class="dropdown notification-list nav-pro-img">
-                    <a class="dropdown-toggle nav-link arrow-none waves-effect nav-user waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                        <img src="{{ asset('theme/agroxa/assets/images/profile.png') }}" alt="user" class="rounded-circle">
+                    <a style="color:#fff" class="dropdown-toggle nav-link arrow-none waves-effect nav-user waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                    {{auth()->user()->nombres}} {{auth()->user()->apellidos}} <img src="{{ asset('theme/agroxa/assets/images/profile.png') }}" alt="user" class="rounded-circle" >
                     </a>
                     <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
                         <!-- item-->
-                        <a class="dropdown-item" href="#"><i class="mdi mdi-account-circle m-r-5"></i> Perfil</a>
+                        <a class="dropdown-item" href="#"><i class="mdi mdi-account-circle m-r-5"></i>usuario: {{auth()->user()->usuario}}</a>
                         <a class="dropdown-item d-block" href="#"><i class="mdi mdi-settings m-r-5"></i> Cuenta</a>
                         <div class="dropdown-divider"></div>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" >
+                        <form id="logout-form" action="{{route('logout')}}" method="post" >
                             @csrf
                             <a id="btn-salir" class="dropdown-item text-danger"  >  <i class="mdi mdi-power text-danger"></i> </i> Cerrar Sesión</a>
                           </form>

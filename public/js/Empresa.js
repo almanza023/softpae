@@ -1,10 +1,6 @@
 $(function() {
 
     $('form').parsley();
-    $("#form_create").submit(function(event) {
-        event.preventDefault();
-        save();
-    });
 
     $("#form_edit").submit(function(event) {
         event.preventDefault();
@@ -13,33 +9,6 @@ $(function() {
     showEdit();
 });
 
-//guardar en el form
-const save = () => {
-    let form = $('#form_create');
-    $.ajax({
-        data: form.serialize(),
-        url: form.attr('action'),
-        type: form.attr('method'),
-        dataType: 'json',
-        success: function(data) {
-            if (data.success) {
-                success(data.success);
-                $('#form_create')[0].reset();
-                updateTable();
-            } else {
-                warning(data.warning);
-
-            }
-        },
-        error: function(data) {
-            if (data.status === 422) {
-                let errors = $.parseJSON(data.responseText);
-                addErrorMessage(errors);
-            }
-        }
-    });
-
-}
 
 //actualizar-editform
 const update = () => {
@@ -50,6 +19,7 @@ const update = () => {
         type: form.attr('method'),
         dataType: 'json',
         success: function(data) {
+
             if (data.success) {
                 success(data.success);
                 $('#modalEdit').modal('hide');
@@ -57,8 +27,10 @@ const update = () => {
             } else {
                 warning(data.warning);
             }
+
         },
         error: function(data) {
+
             if (data.status === 422) {
                 let errors = $.parseJSON(data.responseText);
                 addErrorMessage(errors);
@@ -74,18 +46,20 @@ const showEdit = () => {
         let button = $(event.relatedTarget)
         let id = button.data('id');
         let nombre = button.data('nombre');
-        let descripcion = button.data('descripcion');
+        let telefono = button.data('telefono');
+        let correo = button.data('correo');
         let direccion = button.data('direccion');
-        let contacto = button.data('contacto');
-        let municipio_id = button.data('municipio_id');
+        let web = button.data('web');
+        let representante = button.data('representante');
         let modal = $(this);
 
         modal.find('.modal-body #id').val(id);
         modal.find('.modal-body #nombre_e').val(nombre);
-        modal.find('.modal-body #descripcion_e').val(descripcion);
+        modal.find('.modal-body #telefono_e').val(telefono);
+        modal.find('.modal-body #correo_e').val(correo);
         modal.find('.modal-body #direccion_e').val(direccion);
-        modal.find('.modal-body #contacto_e').val(contacto);
-        $("#municipio_id option[value='" + municipio_id + "']").attr("selected", true);
+        modal.find('.modal-body #web_e').val(web);
+        modal.find('.modal-body #representante_e').val(representante);
 
     });
 }
@@ -97,14 +71,12 @@ const changeEstado = (url) => {
         type: 'GET',
         dataType: 'json',
         success: function(data) {
-
             if (data.success) {
                 success(data.success);
                 updateTable();
             } else {
                 warning(data.warning);
             }
-
         },
     });
 }

@@ -16,18 +16,20 @@ class Sede extends Model
     {
         $this->attributes['nombre'] = strtoupper ($value);
     }
-    
+
 
     public function beneficiarios()
     {
         return $this->hasMany('App\Models\Beneficiarios');
     }
- 
+
     public function institucion()
     {
         return $this->belongsTo('App\Models\Institucion');
     }
-    
 
-    
+
+
+
+
 }

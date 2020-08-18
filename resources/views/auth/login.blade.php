@@ -37,9 +37,9 @@
                             @csrf
                             <div class="form-group">
                                 <label for="username"><i class="fa fa-user" style="color:#35a989"></i> Usuario</label>
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                <input id="usuario" type="text" class="form-control @error('usuario') is-invalid @enderror" name="usuario" value="{{ old('usuario') }}" required autocomplete="usuario" autofocus>
 
-                                @error('email')
+                                @error('usuario')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -92,7 +92,7 @@
                 </div>
             </div>
 
-            <div class="m-t-40 text-center">
+            <div class="m-t-40 text-center" style="background: #137bf6">
                
                 <p style="color: #fff">© Sistema PAE desarrollado por ParqueSoft Sucre</p>
             </div>
