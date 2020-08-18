@@ -5,7 +5,7 @@
         <div id="sidebar-menu">
             <!-- Left Menu Start -->
             <ul class="metismenu" id="side-menu">
-               
+
                 <li>
                     <a href="{{ route('home') }}" class="waves-effect"><i class="fa fa-home"></i><span> Inicio </span></a>
                 </li>
@@ -24,12 +24,14 @@
                 <li>
                     <a href="{{ route('calculos.index') }}" class="waves-effect"><i class="fa fa-calculator"></i><span> Calculos </span></a>
                 </li>
+                <li><a href="{{ route('pedidomen.index') }}"><i class="fa fa-paper-plane"></i><span> Pedidos </span></a></li>
                 <li>
                     <a href="{{ route('usuarios.index') }}" class="waves-effect"><i class="fa fa-user-circle"></i><span> Usuarios </span></a>
                 </li>
                 <li>
                     <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-black-mesa"></i> <span> Configuraciones <span class="float-right menu-arrow"><i class="mdi mdi-plus"></i></span> </span> </a>
                     <ul class="submenu">
+                        <li><a href="{{ route('empresa.index') }}"><i class="fa fa-circle"></i><span> Datos de Empresa </span></a></li>
                         <li><a href="{{ route('unidades.index') }}"><i class="fa fa-percent"></i><span>  Unidades </span></a></li>
                         <li><a href="{{ route('grupo_etarios.index') }}"><i class="fa fa-file"></i><span> Grupos Etarios</span></a></li>
                         <li><a href="{{ route('productos.index') }}"><i class="fa fa-shopping-bag"></i><span>  Productos </span></a></li>
@@ -37,13 +39,14 @@
                         <li><a href="{{ route('jornadas.index') }}"><i class="fa fa-calendar"></i><span>  Jornadas </span></a></li>
                         <li><a href="{{ route('bodegas.index') }}"><i class="fa fa-calendar"></i><span>  Bodegas </span></a></li>
                         <li><a href="{{ route('productobodegas.index') }}"><i class="fa fa-calendar"></i><span> Productos en Bodegas </span></a></li>
-                       
+
+
                     </ul>
                 </li>
-               
-               
 
-                
+
+
+
             </ul>
 
         </div>

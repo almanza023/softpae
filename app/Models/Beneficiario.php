@@ -59,6 +59,17 @@ class Beneficiario extends Model
     }
 
 
+    public static function getCantidadSede($sede){
+        return DB::table('beneficiarios as b')
+           ->join('grupo_etarios as g','g.id','=','b.grupo_etario_id')
+           ->where('b.sede_id',$sede)
+           ->select('g.rango', 'b.cantidad');
+    }
+
+
+
+
+
 
 
 }
