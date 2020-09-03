@@ -92,6 +92,13 @@ class Menu extends Model
         return $resul;
     }
 
+    public static function getBySedeByJornada ($sede, $jornada){
+        return DB::select("SELECT b.tipo_complemento_id,  sum(b.cantidad) AS total, b.grupo_etario_id FROM beneficiarios b
+        INNER JOIN sedes s ON s.id=b.sede_id
+        INNER JOIN instituciones i ON i.id=s.institucion_id
+        WHERE s.id=? AND b.jornada_id=? GROUP BY b.grupo_etario_id,  b.tipo_complemento_id ORDER BY b.grupo_etario_id", [$sede, $jornada]);
+    }
+
 
 
 

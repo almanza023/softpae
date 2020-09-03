@@ -2,19 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Beneficiario;
-use Illuminate\Http\Request;
-use App\Models\CodigoMenu;
-use App\Models\Institucion;
-use App\Models\Producto;
-use App\Models\GrupoEtario;
-use App\Models\Preorder;
-use App\Models\Sede;
-use App\Models\TipoComplemento;
-use Carbon\Carbon;
-use Illuminate\Support\Facades\DB;
 
-class PedidoMenController extends Controller
+use App\Models\Proveedor;
+use Illuminate\Http\Request;
+
+class ProveedorController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -23,9 +15,18 @@ class PedidoMenController extends Controller
      */
     public function index()
     {
-        $instituciones=Institucion::where('estado', '1')->get();
-        $tipos=TipoComplemento::where('estado','1')->get();
-        return view('pedidomen.index', compact('instituciones','tipos'));
+        $proveedores=Proveedor::all();
+
+        if (request()->ajax()) {
+            $proveedores = Proveedor::all();
+            /*si los campos estan vacios mostrar mj de error, sino retornar vista. */
+            if (count($proveedores) == 0) {
+                return response()->json(['warning' => 'Error en el servidor']);
+            } else {
+                return response()->view('tablas.tb-proveedores', compact('proveedores'));
+            }
+        }
+        return view('proveedores.index', compact('proveedores'));
     }
 
     /**
@@ -46,7 +47,10 @@ class PedidoMenController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       $exito= Proveedor::create($request->all());
+        if($exito){
+            return response()->json(['success' => 'PROVEEDOR CREADO CON EXITO!']);
+        }
     }
 
     /**
@@ -80,7 +84,14 @@ class PedidoMenController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
+        if (request()->ajax()) {
+            $exito=Proveedor::findOrFail($request->id)->update($request->all());
+            if($exito){
+                return response()->json(['success' => 'PROVEEDOR ACTUALIZADO CORRECTAMENTE']);
+            }
+            
+        }
     }
 
     /**
@@ -94,33 +105,15 @@ class PedidoMenController extends Controller
         //
     }
 
-    public function filtro(Request $request)
+    public function change($id)
     {
+        $unidad = Proveedor::findOrFail($id);
 
-
-        if (request()->ajax()) {
-            $date = Carbon::now();
-            $date = $date->format('d-m-Y');
-
-
-            $preorders=DB::table('preorders as p')
-            ->join('productos as pro','pro.id','=','p.producto_id')
-            ->select('pro.id','pro.nombre','p.cantidad1','p.cantidad2','p.cantidad3')
-            ->get();
-
-            $institucion=Institucion::find($request->institucion_id);
-            $sede=Sede::find($request->sede_id);
-
-            $menus_id=CodigoMenu::all();
-
-            $beneficiarios=Beneficiario::where('sede_id', $request->sede_id)->get();
-
-
-            return response()->view('ajax.filtro-pedido', compact( 'menus_id', 'preorders',
-             'date',  'institucion', 'sede', 'beneficiarios'));
+        if ($unidad->estado==1) {
+            $unidad->update(['estado' => 0]);
+        } else {
+            $unidad->update(['estado' => 1]);
         }
-
+        return response()->json(['success' => 'ESTADO DE PROVEEDOR ACTUALIZADO CON EXITO!']);
     }
-
-
 }

@@ -31,6 +31,11 @@ Route::resource('usuarios', 'UsuarioController');
 Route::resource('empresa', 'EmpresaController');
 Route::resource('pedidomen', 'PedidoMenController');
 Route::resource('kardex', 'KardexController');
+Route::resource('usuarios', 'UsuarioController');
+Route::resource('proveedores', 'ProveedorController');
+
+//post
+Route::post('preorders/add', 'PreorderController@store')->name('preorder.store');
 
 
 //select dinamicos
@@ -58,6 +63,7 @@ Route::get('bodegas/estado/{id}', 'BodegaController@change')->name('bodegas.stat
 Route::get('productobodegas/estado/{id}', 'ProductoBodegaController@change')->name('productobodegas.status');
 Route::get('usuarios/estado/{id}', 'UsuarioController@change')->name('usuarios.status');
 Route::get('empresa/estado/{id}', 'EmpresaController@change')->name('empresa.status');
+Route::get('proveedores/estado/{id}', 'ProveedorController@change')->name('proveedores.status');
 
 Auth::routes();
 

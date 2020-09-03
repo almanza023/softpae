@@ -30,6 +30,9 @@
                     <a href="{{ route('usuarios.index') }}" class="waves-effect"><i class="fa fa-user-circle"></i><span> Usuarios </span></a>
                 </li>
                 <li>
+                    <a href="{{ route('proveedores.index') }}" class="waves-effect"><i class="fa fa-user-circle"></i><span> Proveedores </span></a>
+                </li>
+                <li>
                     <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-black-mesa"></i> <span> Configuraciones <span class="float-right menu-arrow"><i class="mdi mdi-plus"></i></span> </span> </a>
                     <ul class="submenu">
                         <li><a href="{{ route('empresa.index') }}"><i class="fa fa-circle"></i><span> Datos de Empresa </span></a></li>

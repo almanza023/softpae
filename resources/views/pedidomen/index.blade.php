@@ -15,6 +15,7 @@
                          <tr>
                              <th>INSTITUCION</th>
                              <th>SEDE</th>
+                             <td>COMPLEMENTO</td>
                          </tr>
                          <tr>
                             <td>
@@ -33,6 +34,14 @@
 
 
                            </td>
+                           <td>
+                            <select name="tipo_id" id="tipo_id" class="form-control" required>
+                            <option value="0">Seleccione</option>
+                                @foreach ($tipos as $item)
+                                    <option value="{{ $item->id }}">{{ $item->nombre }}</option>
+                                @endforeach
+                            </select>
+                        </td>
 
 
                         </tr>

@@ -115,22 +115,18 @@ class CalculoCAJMController extends Controller
             $grupo_id=$request->grupo_id;
             $date1=$request->date1;
             $date2=$request->date2;
-            $institucion_id=$request->institucion_id;
+            $sede_id=$request->sede_id;
             $productos = Producto::all();
             $menus_id=CodigoMenu::where('jornada_id', $request->jornada_id)
             ->get();
             $menus=Menu::filtrocajm($request->jornada_id, $request->grupo_id, $date1, $date2) ;
 
-            if($institucion_id>0){
-                $sedes=Sede::where('institucion_id',$request->institucion_id)->get();
-                $total_ben=Beneficiario::getCantidadInstitucion($jornada_id, $tipo_complemento, $grupo_id, $institucion_id);
-            }else{
-                $sedes=Sede::all();
-                $total_ben=Beneficiario::getCantidadTotal($jornada_id, $tipo_complemento, $grupo_id);
+            if($sede_id>0){
+                $total_ben=Beneficiario::getCantidadInstitucion($jornada_id, $tipo_complemento, $grupo_id, $sede_id);
             }
             return response()->view('ajax.filtro-cajm', compact('menus', 'menus_id',
-            'productos','sedes', 'jornada_id','grupo_id','tipo_complemento','date1',
-            'date2','total_ben', 'descontar'));
+            'productos', 'jornada_id','grupo_id','tipo_complemento','date1',
+            'date2','total_ben', 'descontar', 'sede_id'));
         }
 
     }

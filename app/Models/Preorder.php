@@ -4,12 +4,19 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Jornada extends Model
+class Preorder extends Model
 {
-    protected $table = 'jornadas';
+    protected $table = 'preorders';
 
     protected $fillable = [
-        'nombre', 'descripcion', 'estado'
+        'producto_id',
+        'sede_id',
+        'jornada_id',
+        'cantidad1',
+        'cantidad2',
+        'cantidad3',
+        'total',
+        'estado'
     ];
 
     public function setNombreAttribute($value)
@@ -17,7 +24,7 @@ class Jornada extends Model
         $this->attributes['nombre'] = strtoupper($value);
     }
 
-    public function beneficiarios()
+    public function productos()
     {
         return $this->hasMany('App\Beneficiarios');
     }

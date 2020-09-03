@@ -2,6 +2,7 @@
 <html lang="es">
    
     <head>
+        <meta http-equiv="content-type" content="application/vnd.ms-excel;" charset="UTF-8"> <meta charset="UTF-8"> 
         @include('theme.estilos')
         @if ($tabla)
         @include('theme.estilos-tablas')

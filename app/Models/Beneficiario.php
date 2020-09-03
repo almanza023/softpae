@@ -37,14 +37,14 @@ class Beneficiario extends Model
     }
 
 
-    public static function getCantidadInstitucion($jornada_id, $tipo_complemento, $grupo_id, $institucion_id){
+    public static function getCantidadInstitucion($jornada_id, $tipo_complemento, $grupo_id, $sede_id){
         return DB::table('instituciones as i')
            ->join('sedes as s','i.id','=','s.institucion_id')
            ->join('beneficiarios as b','b.sede_id','=','s.id')
            ->where('b.jornada_id',$jornada_id)
            ->where('b.tipo_complemento_id',$tipo_complemento)
            ->where('b.grupo_etario_id',$grupo_id)
-           ->where('i.id',$institucion_id)
+           ->where('b.sede_id',$sede_id)
            ->sum('b.cantidad');
     }
 
@@ -62,7 +62,7 @@ class Beneficiario extends Model
     public static function getCantidadSede($sede){
         return DB::table('beneficiarios as b')
            ->join('grupo_etarios as g','g.id','=','b.grupo_etario_id')
-           ->where('b.sede_id',$sede)
+           ->where('b.sede_id', $sede)
            ->select('g.rango', 'b.cantidad');
     }
 

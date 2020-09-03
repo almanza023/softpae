@@ -4,12 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Jornada extends Model
+class Proveedor extends Model
 {
-    protected $table = 'jornadas';
+    protected $table = 'proveedores';
 
     protected $fillable = [
-        'nombre', 'descripcion', 'estado'
+        'tipo','nombre', 'nit','direccion','telefono','correo', 'estado'
     ];
 
     public function setNombreAttribute($value)
@@ -17,8 +17,5 @@ class Jornada extends Model
         $this->attributes['nombre'] = strtoupper($value);
     }
 
-    public function beneficiarios()
-    {
-        return $this->hasMany('App\Beneficiarios');
-    }
+    
 }

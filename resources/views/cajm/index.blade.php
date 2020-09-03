@@ -14,9 +14,9 @@
                      <table class="table">
                          <tr>
                             <th>INSTITUCION</th>
+                            <th>SEDE</th>
                              <th>JORNADA</th>
                              <th>TIPO COMPLEMENTO</th>
-                             <th>GRUPO ETARIO</th>
                              <th></th>
                          </tr>
 
@@ -27,6 +27,11 @@
                                     @foreach ($instituciones as $item)
                                         <option value="{{ $item->id }}">{{ $item->nombre }}</option>
                                     @endforeach
+                                </select>
+                            </td>
+                            <td>
+                                <select name="sede_id" id="sede_id" class="form-control">
+
                                 </select>
                             </td>
                              <td>
@@ -43,6 +48,18 @@
                                     @endforeach
                                 </select>
                             </td>
+
+
+
+                         </tr>
+                         <tr>
+                            <th>GRUPO ETARIO</th>
+                             <th>FECHA INICIAL</th>
+                            <th>FECHA FINALIZACION</th>
+                            <th>DESCONTAR</th>
+                            <th></th>
+                        </tr>
+                        <tr>
                             <td>
                                 <select name="grupo_id" id="grupo_id" class="form-control">
                                     @foreach ($grupos as $item)
@@ -50,22 +67,15 @@
                                     @endforeach
                                 </select>
                             </td>
-
-                            <td>
-                                <button type="button" id="buscar" class="btn btn-outline-info"><i class="fa fa-search"></i> Buscar</button>
-                            </td>
-                         </tr>
-                         <tr> <th>FECHA INICIAL</th>
-                            <th>FECHA FINALIZACION</th>
-                            <th>DESCONTAR</th>
-                        </tr>
-                        <tr>
                             <td><input class="form-control" type="date" name="date1"></td>
                             <td><input class="form-control" type="date" name="date2"></td>
                             <td><select name="descontar" id="descontar" class="form-control">
                                 <option value="0">NO</option>
                                 <option value="1">SI</option>
                             </select>
+                            <td>
+                                <button type="button" id="buscar" class="btn btn-outline-info"><i class="fa fa-search"></i> Buscar</button>
+                            </td>
                         </td>
                         </tr>
                      </table>

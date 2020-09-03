@@ -2,19 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Beneficiario;
+
 use Illuminate\Http\Request;
-use App\Models\CodigoMenu;
-use App\Models\Institucion;
-use App\Models\Producto;
-use App\Models\GrupoEtario;
+
 use App\Models\Preorder;
 use App\Models\Sede;
-use App\Models\TipoComplemento;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\DB;
 
-class PedidoMenController extends Controller
+class PreorderController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -23,9 +18,7 @@ class PedidoMenController extends Controller
      */
     public function index()
     {
-        $instituciones=Institucion::where('estado', '1')->get();
-        $tipos=TipoComplemento::where('estado','1')->get();
-        return view('pedidomen.index', compact('instituciones','tipos'));
+
     }
 
     /**
@@ -46,7 +39,43 @@ class PedidoMenController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if($request->grupo_etario_id==1){
+
+            $productos=$request->producto_id;
+            for ($i=0; $i < count($productos); $i++) {
+                $preorder=new Preorder();
+                $preorder->producto_id=$productos[$i];
+                $preorder->jornada_id=$request->jornada_id;
+                $preorder->sede_id=$request->sede_id;
+                $preorder->tipo_complemento_id=$request->tipo_complemento_id;
+                $preorder->cantidad1=$request->cantidad[$i];
+                $preorder->save();
+            }
+            return response()->json(['success' => 'DATOS AGREGADOS EXITOSAMENTE.']);
+
+        }else {
+
+            $productos=$request->producto_id;
+            for ($i=0; $i < count($productos); $i++) {
+                $preorder=Preorder::where('producto_id', $productos[$i])
+                ->where('sede_id', $request->sede_id)
+                ->where('jornada_id', $request->jornada_id)->first();
+
+                if($request->grupo_etario_id==2){
+                    $preorder->cantidad2=$request->cantidad[$i];
+                    $preorder->save();
+                }
+                if($request->grupo_etario_id==3){
+                    $preorder->cantidad3=$request->cantidad[$i];
+                    $preorder->save();
+                }
+
+
+            }
+            return response()->json(['success' => 'DATOS AGREGADOS EXITOSAMENTE.']);
+
+
+        }
     }
 
     /**
@@ -94,33 +123,7 @@ class PedidoMenController extends Controller
         //
     }
 
-    public function filtro(Request $request)
-    {
 
-
-        if (request()->ajax()) {
-            $date = Carbon::now();
-            $date = $date->format('d-m-Y');
-
-
-            $preorders=DB::table('preorders as p')
-            ->join('productos as pro','pro.id','=','p.producto_id')
-            ->select('pro.id','pro.nombre','p.cantidad1','p.cantidad2','p.cantidad3')
-            ->get();
-
-            $institucion=Institucion::find($request->institucion_id);
-            $sede=Sede::find($request->sede_id);
-
-            $menus_id=CodigoMenu::all();
-
-            $beneficiarios=Beneficiario::where('sede_id', $request->sede_id)->get();
-
-
-            return response()->view('ajax.filtro-pedido', compact( 'menus_id', 'preorders',
-             'date',  'institucion', 'sede', 'beneficiarios'));
-        }
-
-    }
 
 
 }
