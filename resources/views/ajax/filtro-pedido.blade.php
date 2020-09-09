@@ -1,5 +1,10 @@
 <div class="row" id="datos">
-
+    <form action="{{ route('pedidomen.store') }}" method="POST" id="form_create">
+        @csrf
+        <input type="hidden" name="sede_id" value="{{ $sede_id }}">
+        <input type="hidden" name="tipo_id" value="{{ $tipo_id }}">
+        <input type="hidden" name="inicio" value="{{ $inicio }}">
+        <input type="hidden" name="final" value="{{ $final }}">
     <div class="col-12">
         <div class="card m-b-20">
             <div class="card-body">
@@ -8,10 +13,10 @@
                         <table class="table table-bordered" style="width:100%" id="tblData"  rules="groups" frame="hsides" border="1">
                             <tr>
                             <th><img src="{{ asset('theme/agroxa/assets/images/pae.png') }}" alt="" width="250px"></th>
-                                <th colspan="8">"PROGRAMA DE ALIMENTACIÓN ESCOLAR
+                                <th colspan="8">PROGRAMA DE ALIMENTACIÓN ESCOLAR
                                     REMISIÓN ENTREGA DE VÍVERES EN INSTITUCIÓN EDUCATIVA
                                     -RACIÓN PREPARADA EN SITIO-
-                                    COMPLEMENTO ALIMENTARIO JORNADA MAÑANA - TARDE"
+                                    COMPLEMENTO ALIMENTARIO JORNADA MAÑANA - TARDE
                                 </th>
                             </tr>
                             <tr>
@@ -47,43 +52,46 @@
                             </tr>
                            @endforeach
 
-
-
                          <tr class="table-secondary">
                              <th>PRODUCTO</th>
                              <th colspan="3">CANTIDAD DE ALIMENTOS POR NUMERO DE RACIONES </th>
-
                              <th>UNIDAD DE MEDIDA</th>
                              <th>CANTIDAD TOTAL</th>
                              <th>CANTIDAD ENTREGADA	</th>
                              <th>ESPECIFICACIONES DE CALIDAD</th>
                              <th>FALTANTES</th>
                              <th>DEVOLUCIÓN</th>
-
                          </tr>
-
+                         @php
+                             $suma=0;
+                         @endphp
                          @foreach ($preorders as $item)
+                         @php
+                         $suma=$item->cantidad1 + $item->cantidad2 +$item->cantidad3;
+                        @endphp
+                         <input type="hidden" name="producto_id[]" value="{{ $item->id }}">
+                        <input type="hidden" name="cantidad1[]" value="{{ $item->cantidad1 }}">
+                        <input type="hidden" name="cantidad2[]" value="{{ $item->cantidad2 }}">
+                        <input type="hidden" name="cantidad3[]" value="{{ $item->cantidad3 }}">
+                        <input type="hidden" name="total[]" value="{{ $suma }}">
+
                             <tr>
                             <td>{{ $item->nombre  }}</td>
-
-                                <td >{{ $item->cantidad1 }}</td>
+                            <td >{{ $item->cantidad1 }}</td>
                             <td>{{ $item->cantidad2 }}</td>
                             <td>{{ $item->cantidad3}}</td>
                             </td>
                             <td>kl</td>
+                            <td>{{ $suma }}</td>
                             <td></td>
                             <td></td>
                             <td></td>
-                            <td></td>
-
-
-
                             </tr>
+                            @php
+                            $suma=0;
+                          @endphp
 
                          @endforeach
-
-
-
                                 <tr>
                                     <th colspan="8">C: Cumple       NC: No cumple
                                     </th>
@@ -119,8 +127,12 @@
                         </div>
 
                      </table>
-                     <button class="btn btn-outline-primary" onclick="exportTableToExcel('tblData')">Exportar Datos</button>
+                     <button class="btn btn-outline-primary" id="btnExportar" onclick="exportTableToExcel('tblData')">Exportar Datos</button>
+                     <button class="btn btn-outline-success" type="submit" id="btnGuardar" >Guardar</button>
+
+
                     </div>
+                </form>
 
 
 
@@ -129,5 +141,6 @@
     </div>
     <!-- end col -->
 <script src="{{ asset('js/exportar.js') }}"></script>
+<script src="{{ asset('js/Create_pedido.js') }}"></script>
 
 </div>

@@ -20,6 +20,9 @@
                             <input type="hidden" name="sede_id" value="{{ $sede_id }}">
                             <input type="hidden" name="jornada_id" value="{{ $jornada_id }}">
                             <input type="hidden" name="tipo_complemento_id" value="{{ $tipo_complemento }}">
+                            <input type="hidden" name="fecha_inicio" value="{{ $date1 }}">
+                            <input type="hidden" name="fecha_final" value="{{ $date2 }}">
+
 
                             <button type="submit" class="btn btn-primary">Agregar a Pedidos</button>
                             <br><br><br>

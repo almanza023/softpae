@@ -27,12 +27,8 @@
                                 </select>
                             </td>
                             <td>
-
                             <select name="sede_id" id="sede_id" class="form-control" required>
-
                             </select>
-
-
                            </td>
                            <td>
                             <select name="tipo_id" id="tipo_id" class="form-control" required>
@@ -42,8 +38,6 @@
                                 @endforeach
                             </select>
                         </td>
-
-
                         </tr>
                          <tr>
                             <th>FECHA INICIO</th>
@@ -60,16 +54,11 @@
                      </table>
                     </div>
                 </form>
-
-
-
             </div>
         </div>
     </div>
     <!-- end col -->
-
 </div>
-
 <div id="resultado">
 
 </div>

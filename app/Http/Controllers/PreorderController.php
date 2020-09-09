@@ -47,6 +47,8 @@ class PreorderController extends Controller
                 $preorder->producto_id=$productos[$i];
                 $preorder->jornada_id=$request->jornada_id;
                 $preorder->sede_id=$request->sede_id;
+                $preorder->fecha_inicio=$request->fecha_inicio;
+                $preorder->fecha_final=$request->fecha_final;
                 $preorder->tipo_complemento_id=$request->tipo_complemento_id;
                 $preorder->cantidad1=$request->cantidad[$i];
                 $preorder->save();

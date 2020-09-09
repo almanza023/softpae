@@ -126,7 +126,7 @@ class CalculoCAJMController extends Controller
             }
             return response()->view('ajax.filtro-cajm', compact('menus', 'menus_id',
             'productos', 'jornada_id','grupo_id','tipo_complemento','date1',
-            'date2','total_ben', 'descontar', 'sede_id'));
+            'date2','total_ben', 'descontar', 'sede_id', 'date1', 'date2'));
         }
 
     }
