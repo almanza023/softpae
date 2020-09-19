@@ -1,7 +1,7 @@
 $(function() {
 
     selectSedes();
-    
+
     $("#buscar").click(function() {
         filtro();
     });
@@ -27,7 +27,7 @@ const selectSedes = () => {
     $("#institucion_id").change(function(event) {
         if (event.target.value > 0) {
             $("#sede_id").empty();
-            $.get("sedes/select/" + event.target.value, function(response, menu_id) {
+            $.get("../sedes/select/" + event.target.value, function(response, menu_id) {
                 for (i = 0; i < response.length; i++) {
                     $("#sede_id").append("<option value='" + response[i].id + "'>" + response[i].nombre + "</option>");
                 }
@@ -39,7 +39,3 @@ const selectSedes = () => {
 
     })
 }
-
-
-
-

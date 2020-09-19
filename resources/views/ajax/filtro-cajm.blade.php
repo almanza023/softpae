@@ -45,22 +45,14 @@
                                <td>{{ $loop->iteration  }}</td>
                                <td>{{ $item->nombre  }}</td>
                                @foreach ($menus as $m)
-
                                 @if ($item->id==$m->producto_id)
                                 @php
                                     $var=0;
-
-                                    $var= $m->cantidad *$total_ben;
+                                    $var= $m->cantidad * $total_ben;
                                     $fila+=$var;
                                 @endphp
-                                @if ($descontar==1 && $loop->last)
-                                <td style="width:15px">0</td>
-                                @else
                                 <td style="width:15px">{{ $var }}</td>
                                 @endif
-
-                                @endif
-
                                @endforeach
                                <td><b>{{$fila}}</b>
                                 <input type="hidden" class="form-control" name="cantidad[]" value="{{ $fila }}"></td>
@@ -69,15 +61,10 @@
                                    $fila=0;
                                @endphp
                                </tr>
-
                             @endforeach
                         </table>
-
                        </div>
-
-
                     </form>
-
             </div>
         </div>
     </div>

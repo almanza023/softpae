@@ -18,7 +18,6 @@ class PreorderController extends Controller
      */
     public function index()
     {
-
     }
 
     /**
@@ -39,44 +38,60 @@ class PreorderController extends Controller
      */
     public function store(Request $request)
     {
-        if($request->grupo_etario_id==1){
+        if ($request->grupo_etario_id == 1) {
+            $validar = Preorder::where('sede_id', $request->sede_id)
+            ->where('fecha_inicio', $request->fecha_inicio)
+            ->where('fecha_final', $request->fecha_final)
+            ->where('tipo_complemento_id', $request->tipo_complemento_id)
+            ->where('jornada_id', $request->jornada_id)
+            ->sum('cantidad1');
+            if ($validar > 0) {
+                return response()->json(['warning' => 'DATOS YA FUERON AGREGADOS.']);
+            } else {
+                $productos = $request->producto_id;
+                for ($i = 0; $i < count($productos); $i++) {
 
-            $productos=$request->producto_id;
-            for ($i=0; $i < count($productos); $i++) {
-                $preorder=new Preorder();
-                $preorder->producto_id=$productos[$i];
-                $preorder->jornada_id=$request->jornada_id;
-                $preorder->sede_id=$request->sede_id;
-                $preorder->fecha_inicio=$request->fecha_inicio;
-                $preorder->fecha_final=$request->fecha_final;
-                $preorder->tipo_complemento_id=$request->tipo_complemento_id;
-                $preorder->cantidad1=$request->cantidad[$i];
-                $preorder->save();
-            }
-            return response()->json(['success' => 'DATOS AGREGADOS EXITOSAMENTE.']);
-
-        }else {
-
-            $productos=$request->producto_id;
-            for ($i=0; $i < count($productos); $i++) {
-                $preorder=Preorder::where('producto_id', $productos[$i])
-                ->where('sede_id', $request->sede_id)
-                ->where('jornada_id', $request->jornada_id)->first();
-
-                if($request->grupo_etario_id==2){
-                    $preorder->cantidad2=$request->cantidad[$i];
+                    $preorder = new Preorder();
+                    $preorder->producto_id = $productos[$i];
+                    $preorder->jornada_id = $request->jornada_id;
+                    $preorder->sede_id = $request->sede_id;
+                    $preorder->fecha_inicio = $request->fecha_inicio;
+                    $preorder->fecha_final = $request->fecha_final;
+                    $preorder->tipo_complemento_id = $request->tipo_complemento_id;
+                    $preorder->cantidad1 = $request->cantidad[$i];
                     $preorder->save();
                 }
-                if($request->grupo_etario_id==3){
-                    $preorder->cantidad3=$request->cantidad[$i];
-                    $preorder->save();
+                return response()->json(['success' => 'DATOS AGREGADOS EXITOSAMENTE.']);
                 }
 
+        } else {
 
+            $validar = Preorder::where('sede_id', $request->sede_id)
+            ->where('fecha_inicio', $request->fecha_inicio)
+            ->where('fecha_final', $request->fecha_final)
+            ->where('tipo_complemento_id', $request->tipo_complemento_id)
+            ->where('jornada_id', $request->jornada_id)
+            ->sum('cantidad1');
+            if(($validar)==0){
+                return response()->json(['warning' => 'DEBE INGRESAR EL PRIMER GRUPO ETARIO.']);
+            }else {
+                $productos = $request->producto_id;
+            for ($i = 0; $i < count($productos); $i++) {
+                $preorder = Preorder::where('producto_id', $productos[$i])
+                    ->where('sede_id', $request->sede_id)
+                    ->where('jornada_id', $request->jornada_id)->first();
+
+                if ($request->grupo_etario_id == 2) {
+                    $preorder->cantidad2 = $request->cantidad[$i];
+                    $preorder->save();
+                }
+                if ($request->grupo_etario_id == 3) {
+                    $preorder->cantidad3 = $request->cantidad[$i];
+                    $preorder->save();
+                }
             }
             return response()->json(['success' => 'DATOS AGREGADOS EXITOSAMENTE.']);
-
-
+            }
         }
     }
 
@@ -124,8 +139,4 @@ class PreorderController extends Controller
     {
         //
     }
-
-
-
-
 }

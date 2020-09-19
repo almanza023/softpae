@@ -17,6 +17,22 @@ class Pedido extends Model
         'estado'
     ];
 
+    public function tipo_complemento()
+    {
+        return $this->belongsTo('App\Models\TipoComplemento');
+    }
+    public function sede()
+    {
+        return $this->belongsTo('App\Models\Sede');
+    }
+
+
+    public function detalles()
+    {
+        return $this->hasMany('App\Models\DetallePedido');
+    }
+
+
     public static function duplicados($sede, $tipo, $date1, $date2){
         return DB::table('pedidos')
         ->where('sede_id', $sede)

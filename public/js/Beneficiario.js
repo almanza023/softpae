@@ -45,7 +45,6 @@ const save = () => {
             if (data.success) {
 
                 success(data.success);
-                $('#form_create')[0].reset();
                 updateTable();
             } else {
                 warning(data.warning);

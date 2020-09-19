@@ -24,6 +24,7 @@
                 <li>
                     <a href="{{ route('calculos.index') }}" class="waves-effect"><i class="fa fa-calculator"></i><span> Calculos </span></a>
                 </li>
+                <li><a href="{{ route('cajm.index') }}"><i class="fa fa-paper-plane"></i><span> CAJM </span></a></li>
                 <li><a href="{{ route('pedidomen.index') }}"><i class="fa fa-paper-plane"></i><span> Pedidos </span></a></li>
                 <li><a href="{{ route('kardex.index') }}"><i class="fa fa-paper-plane"></i><span> Kardex </span></a></li>
                 <li>

@@ -25,9 +25,8 @@ class PedidoMenController extends Controller
      */
     public function index()
     {
-        $instituciones = Institucion::where('estado', '1')->get();
-        $tipos = TipoComplemento::where('estado', '1')->get();
-        return view('pedidomen.index', compact('instituciones', 'tipos'));
+       $pedidos=Pedido::all();
+        return view('pedidomen.index', compact('pedidos'));
     }
 
     /**
@@ -37,7 +36,9 @@ class PedidoMenController extends Controller
      */
     public function create()
     {
-        //
+        $instituciones = Institucion::where('estado', '1')->get();
+        $tipos = TipoComplemento::where('estado', '1')->get();
+        return view('pedidomen.create', compact('instituciones', 'tipos'));
     }
 
     /**
@@ -96,7 +97,9 @@ class PedidoMenController extends Controller
      */
     public function show($id)
     {
-        //
+        $pedido=Pedido::find($id);
+        $beneficiarios = Beneficiario::where('sede_id', $pedido->sede_id)->get();
+        return view('pedidomen.show', compact('pedido', 'beneficiarios'));
     }
 
     /**

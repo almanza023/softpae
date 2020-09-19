@@ -33,6 +33,7 @@ Route::resource('pedidomen', 'PedidoMenController');
 Route::resource('kardex', 'KardexController');
 Route::resource('usuarios', 'UsuarioController');
 Route::resource('proveedores', 'ProveedorController');
+Route::resource('compras', 'OrdenCompraController');
 
 //post
 Route::post('preorders/add', 'PreorderController@store')->name('preorder.store');
@@ -41,6 +42,7 @@ Route::post('preorders/add', 'PreorderController@store')->name('preorder.store')
 //select dinamicos
 Route::get('menus/select/{jornada}', 'MenuController@getMenus');
 Route::get('sedes/select/{id}', 'InstitucionController@getSedes');
+Route::get('/reportecompra/{id}', 'OrdenCompraController@reporte')->name('reporte.compra');
 
 
 //filtros

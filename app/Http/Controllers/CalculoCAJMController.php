@@ -121,6 +121,7 @@ class CalculoCAJMController extends Controller
             ->get();
             $menus=Menu::filtrocajm($request->jornada_id, $request->grupo_id, $date1, $date2) ;
 
+
             if($sede_id>0){
                 $total_ben=Beneficiario::getCantidadInstitucion($jornada_id, $tipo_complemento, $grupo_id, $sede_id);
             }
